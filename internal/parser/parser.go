@@ -9,9 +9,16 @@ import (
 	"go.com/go-project/internal/model"//from go.mod
 )
 
-// Regex capture the IP, host, time
+// Regex gets IP, host, time
 var receivedRegex = regexp.MustCompile(
-	`(?i)(?:from\s+(?P<host>[^\s]+)\s+)?\s*(?:\((?P<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})[^\)]*\))?.*?(?P<time>[A-Z][a-z]{2},\s+\d{1,2}\s+[A-Z][a-z]{2}\s+\d{4}\s+\d{2}:\d{2}:\d{2}\s+[\-+][\d]{4}(?:\s+\([A-Z]+\))?)`,
+	`(?i)Received:.*?` +
+	// host 
+	`(?:\s+from\s+(?P<host>[^\s\(\);]+)\s*)?` + 
+	// IP
+	`(?:.*?\[?\s*(?P<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s*\]?.*?)?` + 
+	// time 
+	`(?P<time>[A-Z][a-z]{2},\s+\d{1,2}\s+[A-Z][a-z]{2}\s+\d{4}\s+\d{2}:\d{2}:\d{2}\s+[\-+][\d]{4}(?:\s+\([A-Z]+\))?)` +
+	`.*$`,
 )
 
 
@@ -81,7 +88,7 @@ func ParseRawEmail(rawInput string) (*model.EmailRouteTrace, error) {
 
 func parseReceivedLine(rawLine string) (*model.ServerSegment, error) {// gets time, ip...from one segments 
 	segment := &model.ServerSegment{
-		RawHeaderLine: rawLine,
+		RawHeaderLine: rawLine, 
 	}
 
 	match := receivedRegex.FindStringSubmatch(rawLine)
