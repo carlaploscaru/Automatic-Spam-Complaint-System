@@ -34,3 +34,4 @@ procedures, and building tools that help maintain internet hygiene.
 • Template system for different types of spam\
 • Optional: Direct sending via SMTP\
 
+Run: “go run main.go” -> paste raw copie email from clipboard -> "ctrl + z" -> "enter" -> see results
