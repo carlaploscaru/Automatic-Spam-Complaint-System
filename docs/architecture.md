@@ -1,27 +1,24 @@
 9. Project: Automatic Spam Complaint System
 
-Current Structure of directory 
+Architecture Scheme:
 
-Automatic-Spam-Complaint-System/
-├── cmd/
-│ └── main.go 
-├── internal/ 
-│ └── example/
-│ └── package.go 
-| └── model/
-| └── model.go 
-| └── parser/
-| └── parser.go 
-├── tests/
-│ └── example_test.go 
-├── docs/
-│ ├── architecture.md 
-│ ├── decisions.md 
-│ └── screenshots/
-│ └── generateTraceRouteTest.png 
-| └── email.txt
-├── go.mod 
-└── README.md 
+USER ─────────> Console/UI  ─────────> add input email
+                            |               |
+                            |   email header gets extracted 
+                            |               |
+                            |    original IP is identified
+                            |
+                            └─────────> get abuse contact (WHOIS)
+                            └─────────> receive generated complaint email 
+                            |                           |
+                            |                      customizable
+                            |                           |
+                            |               save complaint in database
+                            |                           |
+                            |                      send complaint
+                            |
+                            └─────────> see complaints list(track which complaints were sent)
+
 
 1. First step implemented: Parsing email, generating TraceRoute.
 • As a user, I can paste spam email headers or full source
@@ -36,7 +33,9 @@ Files used for implementing:
 • /cmd/main.go (main gets the full email input and calls parser.ParseRawEmail function from parser.go to convert the input email text into the structured EmailRouteTrace form from model.go)
 
 
-Flow scheme:
-add input email into console -> extract email header -> parse email header -> identify origin IP 
-
 2. WHOIS
+
+
+
+
+
