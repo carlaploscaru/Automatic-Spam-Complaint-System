@@ -1,0 +1,1809 @@
+Delivered-To: carlaploscaru@gmail.com
+Received: by 2002:a05:6400:438a:b0:2ac:bd13:44e7 with SMTP id jv10csp2336748ecb;
+        Sun, 9 Nov 2025 00:14:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF4Uw5ASGRO5Hc+oUMdhad5mw9T9guDtpeUkEG0f1kvo6Md4ObvCtfyF05IxAXmdbHTZcH/
+X-Received: by 2002:a05:6402:4408:b0:640:bd90:350d with SMTP id 4fb4d7f45d1cf-6415dc03675mr3622339a12.1.1762676086434;
+        Sun, 09 Nov 2025 00:14:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762676086; cv=none;
+        d=google.com; s=arc-20240605;
+        b=a2Ia4RJtxTBHdpoYSxxTQWFcFSd2gaaGBvBt4rnvREcq6BT+L/WMLqXlEo5DZ6zk2S
+         VraxaT3JUVZBSy7I+8t9Jlwd0dIqXt2yC/yMqKkCCZnJMiLx55tC0KrF8GVf1heZ6zmD
+         T1EZCbfKyod2aVRtG1y5TP22qshVhK5rgEFZrB0pp+GGtkFo5FeGCtO0ozmrOp2nyzMw
+         XRKZiE4Wt7QGLKTED4dR2q+QIu9Yl5HpRvcQ5nWBWyvRWpFBRdvaWW+y0l82mAldPiEF
+         HlgCRkADg3l0MzNE8geKPVTCs8uCNAL2IPGMUf/yzdFkdQFz57dZXhWdGXMHxmuJylxt
+         O97g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=message-id:subject:to:from:abuse-reports-to:list-owner:precedence
+         :list-unsubscribe-post:list-unsubscribe:feedback-id:message-category
+         :mime-version:date:cfbl-address:dkim-signature:dkim-signature;
+        bh=5Wea92+MBESAJUZkvbksU0Os9NTP8DNvsUo4iKKUXJ0=;
+        fh=H0YXZQBCuMjhB/QsWoJexmGuRR5u9LaQRY5byPfKBiE=;
+        b=jctCdUP5bdoBwpt1lx6kqOwSOC4a0sYjAFu4iCRKPuU/MKVPGB0Zt2rv6JPVatzdPf
+         ZmIJlPmYTvXFzStizgKaDRlpc2y3LvyWZIx489kTQDNX6rhaeUCU69t3O+E7koU4b4gf
+         tK8MsAVkkJSaJ7jasR53NnOR+Wh7sxrzmzx1rztpIv/iJqRHuSbV/KKjbhmCMkQxCJ6T
+         C/6LlkYBk1QR6XHr70ov2yrlcr9B9lgwwryP+2hWH8wpC45N7XasttrRRVD2Hd8pa4hr
+         aZYLWZY3NmcMtww3gLfMyd3oS91I7Zv8dYDH0vusZTgIQPVNmDAeXFMojHvNCWvTO2wS
+         Brgg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@news.tipli.ro header.s=k2-9611 header.b=oL7YzmX3;
+       dkim=pass header.i=@mkt-ags.com header.s=k1-1 header.b=blCk9BvB;
+       spf=pass (google.com: domain of c9611-m25166644482-e1205697253@mkt.news.tipli.ro designates 185.136.201.79 as permitted sender) smtp.mailfrom=c9611-m25166644482-e1205697253@mkt.news.tipli.ro;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=news.tipli.ro
+Return-Path: <c9611-m25166644482-e1205697253@mkt.news.tipli.ro>
+Received: from mail-tester.com (8.8.8.8) by mx.google.com with ESMTPS;
+        Wed, 24 Dec 2025 10:00:00 -0800
+        Subject: Test Mock Spam
+        From: "Spammer" <spammer@test.com>
+Received-SPF: pass (google.com: domain of c9611-m25166644482-e1205697253@mkt.news.tipli.ro designates 185.136.201.79 as permitted sender) client-ip=185.136.201.79;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@news.tipli.ro header.s=k2-9611 header.b=oL7YzmX3;
+       dkim=pass header.i=@mkt-ags.com header.s=k1-1 header.b=blCk9BvB;
+       spf=pass (google.com: domain of c9611-m25166644482-e1205697253@mkt.news.tipli.ro designates 185.136.201.79 as permitted sender) smtp.mailfrom=c9611-m25166644482-e1205697253@mkt.news.tipli.ro;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=news.tipli.ro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=news.tipli.ro; s=k2-9611; h=message-id:subject:to:from:list-owner:list-unsubscribe-post:list-unsubscribe:
+	 feedback-id:message-category:x-email-id:mime-version:content-type:date:
+	 x-csa-complaints:cfbl-address:from:date:message-id:content-type:
+	 content-disposition:mime-version; bh=5Wea92+MBESAJUZkvbksU0Os9NTP8DNvsUo4iKKUXJ0=; b=oL7YzmX3SqilWLaag4pwXKkYH/aO7UGEOi7wa9/Q4Q3pviCKqi3jTukrWRIX/HrJV4I6/n6dMwXMB
+	 LBfhFS492JuF57W4X0ZVsosoOMfK58tRioHN0hZo7bP8oPmADOotA3QYfIah+K9pW/56DNrO9t26Fx
+	 XEE+GGAAIMnKUk80cH6msXWNt8ZSIfjJmU/6+HeQU5U+MpKqegF9CqP6g60G71GS7SiDx3Gn3fAfqj
+	 nsb44p2FpO+rO3hK3zVKl0xBIY7Gue4RahgklbeJnrDVESWB1NIc/nXzpmhrT9PIw5Sn+3AVLPrggw
+	 t3RWSkgnUxol0NqUh58AGJwHxLjvlBA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mkt-ags.com; s=k1-1; h=message-id:subject:to:from:list-owner:list-unsubscribe-post:list-unsubscribe:
+	 feedback-id:message-category:x-email-id:mime-version:content-type:date:
+	 x-csa-complaints:cfbl-address:from:date:message-id:content-type:
+	 content-disposition:mime-version; bh=5Wea92+MBESAJUZkvbksU0Os9NTP8DNvsUo4iKKUXJ0=; b=blCk9BvBiReueZAv6TdWYSurkI7iU+LWIh6+qak8agqm7Oc30L36AhKaNjlF9sku+70gdJ6Tf2YiX
+	 +k5W7GwFUohtbtGLmVko8S2DRpPASi66GQGGs4dSpKdYGLZBre/IrMLIeQ6T9b7WtJfVeVqqGyYZsF
+	 fUlx+fNkjCtxjGXhjS2LDUv2G3IDBZk1QI9M1vH6ZQYFueEhiuGgrrKqhXVQMigVhUXyfG4s+ca0+Z
+	 t+k55/+NRxeQ5drQukn9GWjIjfsLhxhGeS4XTqzcgjrSvSQfT8Zp/mPaOrMzM98J/eOr/gjm+cMWML
+	 Gc0Z0CFFB1gbAgpeJT4nJQwBgSgJD8Q==
+CFBL-Address: cfbl@mkt-ags.com; report=arf
+X-Auto-Response-Suppress: AutoReply, OOF, RN, NRN
+X-CSA-Complaints: csa-complaints@eco.de
+Date: Sun, 09 Nov 2025 09:14:46 +0100
+Content-Type: multipart/alternative; boundary="----------=_1762676086-3654251-1848"
+MIME-Version: 1.0
+X-Mailer: Mailkit 2.8
+X-Email-ID: 9611-1478-199705-7059435-25166644482-1205697253-118976
+X-Job: RO_20251109_BFsp-9611-1478-199705-7059435
+X-MKT-Route: agency:c9611:a1478
+Message-Category: bulk/newsletter
+Feedback-ID: 199705:217409611:bulk:mailkit
+List-Unsubscribe: <https://tipli.u.mailkit.eu/mc/VLCCVLWL/GJIASRPQSCJGLUEONK/VLCPPPEEEMV>, <mailto:VLCCVLWL/GJIASRPQSCJGLUEONK/VLCPPPEEEMV.owner@unsub.mailkit.eu>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Precedence: bulk
+X-Postmaster-Msgtype: 7059435
+List-Owner: <mailto:jirasek@tipli.cz>
+X-Abuse-Info: <abuse@mailkit.com>
+Abuse-Reports-To: <abuse@mailkit.com>
+From: "Tipli.ro" <client@news.tipli.ro>
+To: <carlaploscaru@gmail.com>
+Subject: ⏰ Ultima șansă - Black Friday se apropie de final 💣
+Message-ID: <20251109091446.MKT25166644482@news.tipli.ro>
+
+------------=_1762676086-3654251-1848
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+P=C3=A2n=C4=83 la 8=EF=B8=8F=E2=83=A30=EF=B8=8F=E2=83=A3% reducere =E2=80=
+=93 se termin=C4=83 azi! =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=
+=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=
+=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=
+=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=
+=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=
+=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=
+=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F
+=CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=8F =CD=
+=8F =CD=8F =CD=8F =CD=8F =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD
+
+Tipli
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscAFhYWVjbGlja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbGZpZF9zbWRrMjUxNjY2NDQ0=
+ODJjY2lkZDk2MTFlaWRfdWwgwKEHY2xzcAFhdSaeAWh0dHBzOi8vd3d3LnRpcGxpLnJvLz91dG1=
+fc291cmNlPW5ld3MmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249Uk8tMjAyNTExMDktQk=
+ZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUExYTFNCRm81YURvTXBYYkxuelBsbW95b=
+FNsYnJaaDZCNHZlME9IN3VlWXB6/x-pH7-IY_ZNU1ffiLXnW0Flw8aiZ1xjv7SXdF70kyTQ/cli=
+ck)
+
+alt
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscAJhYWVjbGlja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbGZpZF9zbWRrMjUxNjY2NDQ0=
+ODJjY2lkZDk2MTFlaWRfdWwgwKEHYXUmvAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGl=
+vbmVhemEvbWFnYXppbi9zaW5zYXk_dXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmdX=
+RtX2NhbXBhaWduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqb=
+lBMWExTQkZvNWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlwemNsc3AB/s5YTW8E=
+wGl20ylzqemmHTHK-e3HNKBrigc-8Qva3QDk/click)
+
+S=C4=83 ai o zi minunat=C4=83,
+
+acum este ultima =C8=99ans=C4=83 de a ob=C8=9Bine cele mai bune oferte din =
+an. Descoper=C4=83
+cupoanele disponibile pe Tipli.ro (https://tipli.t.mailkit.eu/PfNybCUAxALFA=
+nwoKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3=
+Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwA2FhZWNsaWNrY2xvY2VkYXR=
+hMWRjaGFuZWVtYWlsZgEu8FZtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdjbHNwAW=
+F1JpkBaHR0cDovL3RpcGxpLnJvLz91dG1fc291cmNlPW5ld3MmdXRtX21lZGl1bT0FYQUR8GJjY=
+W1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhM=
+U0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/OYiLWEGG2HT6RrayVTk=
+LsoJPA3SjZyuZSB9qLWRyO2U/click)
+=C8=99i prime=C8=99te bani =C3=AEnapoi din achizi=C8=9Biile tale. Timpul se=
+ scurge! =E2=8F=B0
+
+Ultima strigare: Cupoane Black Friday =E2=80=BA=E2=80=BA
+ (https://tipli.t.mailkit.eu/PfNybCUA0QLSAnwoKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwBGFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8F5tZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSamAWh0dHBzOi8vd3d3LnRpcGxpLnJvL3JlZHV=
+jZXJpP3V0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPQVpBRHwZ2NhbXBhaWduPVJPLTIwMjUxMT=
+A5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb01wWGJMbnpQb=
+G1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlwemNsc3AB/iXnfQ44nQm90yXzHQ4EXv8Zo5Ob-jLxxmVx=
+ro-jZrrI/click)
+
+Cupoane de reducere =E2=8F=B0
+
+$deal->name
+ (https://tipli.t.mailkit.eu/PfNybCUAsgO8A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwBWFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GNtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaQAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vc2Ftc3VuZy8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLXNhBR8wLWRlLXBhbi1sYS00MAEGGH=
+Nla2VjaWEFGBRyb2R1c2UBC4BibGFjay1kYXlzLTc3NzYyNiZ1dG1fc291cmNlPW5ld3MFEBhtZ=
+WRpdW09BccFEWBjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwAWPwVmwyJmF0PWtuNmFNMXVjbUNi=
+ajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGV=
+hbC03Nzc2MjZjbHNwAQ/Nu5fu3R8Bc84w5zSygEk1RdD6_HgNUFFj1GfJ16WdV4/click)
+
+Cod reducere Samsung de p=C3=A2n=C4=83 la 40% la sekec=C8=9Bia de produse d=
+e Black Days
+=C2=BB
+ (https://tipli.t.mailkit.eu/PfNybCUAsgO8A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwBmFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GNtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaQAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vc2Ftc3VuZy8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLXNhBR8wLWRlLXBhbi1sYS00MAEGGH=
+Nla2VjaWEFGBRyb2R1c2UBC4BibGFjay1kYXlzLTc3NzYyNiZ1dG1fc291cmNlPW5ld3MFEBhtZ=
+WRpdW09BccFEWBjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwAWPwVmwyJmF0PWtuNmFNMXVjbUNi=
+ajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGV=
+hbC03Nzc2MjZjbHNwAQ/kFAPsYj1RIpGHx3Ga7Dhmb0gbGVWzDiDiYsX7EynX_Q/click)
+
+p=C3=A2n=C4=83 la 1 % =C3=AEnapoi
+
+Ob=C8=9Bine un cupon
+ (https://tipli.t.mailkit.eu/PfNybCUAsgO8A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwB2FhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GNtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaQAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vc2Ftc3VuZy8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLXNhBR8wLWRlLXBhbi1sYS00MAEGGH=
+Nla2VjaWEFGBRyb2R1c2UBC4BibGFjay1kYXlzLTc3NzYyNiZ1dG1fc291cmNlPW5ld3MFEBhtZ=
+WRpdW09BccFEWBjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwAWPwVmwyJmF0PWtuNmFNMXVjbUNi=
+ajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGV=
+hbC03Nzc2MjZjbHNwAQ/eNGdQ6F6DxupIg5j4hZUxF8jGOGq9Nkk6FMlRPvQwPo/click)
+
+$deal->name
+ (https://tipli.t.mailkit.eu/PfNybCUAsgO0A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwCGFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaIAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vc2luc2F5Lz9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtCR7wQi01MC1sYS1maWVjYXJlLWFsLW=
+RvaWxlYS1hcnRpY29sLW1haS1pZWZ0aW4tNzc3NTk1JnV0bV9zb3VyY2U9bmV3cyYBEBhtZWRpd=
+W09Bb8AJgER8HNjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNi=
+ajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGV=
+hbC03Nzc1OTVjbHNwAQ/5Wv6xU7mtsy-U5kHmWzNP9O0IBhTorerC9Tmzpgsr3k/click)
+
+Cod reducere Sinsay 50% la fiecare al doilea articol, mai ieftin =C2=BB
+ (https://tipli.t.mailkit.eu/PfNybCUAswO0A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwCWFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GZtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdjbHNwAWF1JogCaHR0cHM6Ly93d3cudGlwbGkucm8=
+vbWFnYXppbi9zaW5zYXkvP29wZW5EZWFsPWNvZC1yZWR1Y2VyZS1zBR7wQi01MC1sYS1maWVjYX=
+JlLWFsLWRvaWxlYS1hcnRpY29sLW1haS1pZWZ0aW4tNzc3NTk1JnV0bV9zb3VyY2U9bmV3cyYBE=
+BhtZWRpdW09BcQAJgER8G5jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFN=
+MXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWV=
+ZcHojZGVhbC03Nzc1OTU/obYQ9VqQ2Vv-yYbOB155N4qfxufRf1etxL8hS3L0jow/click)
+
+7,008 % =C3=AEnapoi
+
+Ob=C8=9Bine un cupon
+ (https://tipli.t.mailkit.eu/PfNybCUAsgO0A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwCmFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaIAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vc2luc2F5Lz9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtCR7wQi01MC1sYS1maWVjYXJlLWFsLW=
+RvaWxlYS1hcnRpY29sLW1haS1pZWZ0aW4tNzc3NTk1JnV0bV9zb3VyY2U9bmV3cyYBEBhtZWRpd=
+W09Bb8AJgER8HNjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNi=
+ajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGV=
+hbC03Nzc1OTVjbHNwAQ/ifLIs83VjOSz7lsh0HNXciEPitOn2U1pG2pfcjpWUMs/click)
+
+$deal->name
+ (https://tipli.t.mailkit.eu/PfNybCUAowOpA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwC2FhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSb9AWh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vbm90aW5vLz9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtCR7YLTIwLWxhLWFjaGl6aXRpaS1kZS=
+1wZXN0ZS01MC1sZWktNzc3MDA2JnV0bV9zb3VyY2U9bmV3cwUQGG1lZGl1bT0FtAUR8HNjYW1wY=
+Wlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JG=
+bzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03NzcwMDZjbHNwAQ/=
+EEi5rt3nz2wU7hSRVHI8osgLJWmqF7r9TkgF4OzZv3o/click)
+
+Cod reducere Notino 20% la achizi=C8=9Bii de peste 50 lei =C2=BB
+ (https://tipli.t.mailkit.eu/PfNybCUAowOpA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwDGFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSb9AWh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vbm90aW5vLz9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtCR7YLTIwLWxhLWFjaGl6aXRpaS1kZS=
+1wZXN0ZS01MC1sZWktNzc3MDA2JnV0bV9zb3VyY2U9bmV3cwUQGG1lZGl1bT0FtAUR8HNjYW1wY=
+Wlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JG=
+bzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03NzcwMDZjbHNwAQ/=
+-WpEt43hWPgOypsnkbHkrZNAMGd1VhblBYT4KQeTDWw/click)
+
+3 % =C3=AEnapoi
+
+Ob=C8=9Bine un cupon
+ (https://tipli.t.mailkit.eu/PfNybCUAowOpA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwDWFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSb9AWh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vbm90aW5vLz9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtCR7YLTIwLWxhLWFjaGl6aXRpaS1kZS=
+1wZXN0ZS01MC1sZWktNzc3MDA2JnV0bV9zb3VyY2U9bmV3cwUQGG1lZGl1bT0FtAUR8HNjYW1wY=
+Wlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JG=
+bzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03NzcwMDZjbHNwAQ/=
+vGgQwTHnbPqFTRlHD-BHQ8rtNLaMtDyh-l777YYEns4/click)
+
+$deal->name
+ (https://tipli.t.mailkit.eu/PfNybCUAogOjA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwDmFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8KhtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdjbHNwAWF1JvcBaHR0cHM6Ly93d3cudGlwbGkucm8=
+vbWFnYXppbi9lcGFudG9maS8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLWVwYW50b2ZpLWJsYWNrLW=
+ZyaWRheS0zMC1leHRyYS03NzY5MTMmdXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09BbMFEfBuY=
+2FtcGFpZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUExY=
+TFNCRm81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3VlWXB6I2RlYWwtNzc2OTEz/_4=
+AcaRlESPTBcS102WqX_vK4YIAsG4NEfvBrJlRITqM/click)
+
+Cod reducere ePantofi Black Friday -30% extra =C2=BB
+ (https://tipli.t.mailkit.eu/PfNybCUAnwOjA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwD2FhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GZtZGsyNTE2=
+NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSb3AWh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F=
+6aW4vZXBhbnRvZmkvP29wZW5EZWFsPWNvZC1yZWR1Y2VyZS1lcGFuASCwLWJsYWNrLWZyaWRheS=
+0zMC1leHRyYS03NzY5MTMmdXRtX3NvdXJjZT1uZXdzBRAYbWVkaXVtPQWuBRHwc2NhbXBhaWduP=
+VJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFE=
+b01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweiNkZWFsLTc3NjkxM2Nsc3AB/243lI9=
+8xX0LNH_FChxARa5jp7fjCBzWgvrL-FSlrgEE/click)
+
+p=C3=A2n=C4=83 la 3 % =C3=AEnapoi
+
+Ob=C8=9Bine un cupon
+ (https://tipli.t.mailkit.eu/PfNybCUAogOkA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwIBBhYWVjbGlja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbAF68GZzbWRrMjUx=
+NjY2NDQ0ODJjY2lkZDk2MTFlaWRfdWwgwKEHYXUm9wFodHRwczovL3d3dy50aXBsaS5yby9tYWd=
+hemluL2VwYW50b2ZpLz9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtZXBhBSCwLWJsYWNrLWZyaWRheS=
+0zMC1leHRyYS03NzY5MTMmdXRtX3NvdXJjZT1uZXdzBRAsbWVkaXVtPWVtYWlsBRHwc2NhbXBha=
+WduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZv=
+NWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweiNkZWFsLTc3NjkxM2Nsc3AB/24=
+rfvn2kNfRNGxXFdZ8gKHBwkC3yJIqQ5lIAes29d2w/click)
+
+$deal->name
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCARYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2F1JoACaHR0cHM6Ly93d3cudGlwbGkucm8vbWFnYXppbi9=
+saXRlcmEvP29wZW5EZWFsPWJsYWNrLWZyaWRheS0yMDI1LXBlLWxpdGVyYS1yby1tZWdhLXJlZH=
+VjZXJpLWktY2Fkb3VyaS03NzY0NDEmdXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmd=
+XRtX2NhbXBhaWduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNq=
+blBMWExTQkZvNWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweiNkZWFsLTc3NjQ=
+0MWNsc3AB/j2mWxdYK7VDnw-X9ccrN2_iLE3jWkLEwweTH5znnh-E/click)
+
+Black Friday 2025 pe litera.ro - Mega reduceri de p=C3=A2n=C4=83 la 90% =C2=
+=BB
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCASYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmgAJodHRwczovL3d3dy50aXBsaS5yby9tYWd=
+hemluL2xpdGVyYS8_b3BlbkRlYWw9YmxhY2stZnJpZGF5LTIwMjUtcGUtbGl0ZXJhLXJvLW1lZ2=
+EtcmVkdWNlcmktaS1jYWRvdXJpLTc3NjQ0MSZ1dG1fc291cmNlPW5ld3MmdXRtX21lZGl1bT1lb=
+WFpbCZ1dG1fY2FtcGFpZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoy=
+NW9OM2puUExYTFNCRm81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3VlWXB6I2RlYWw=
+tNzc2NDQx/mLyGnpQW1ag-vNUMijleXS93wkdCxL5ROuWvnIs5G1Q/click)
+
+5 % =C3=AEnapoi
+
+Ob=C8=9Bine o reducere
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCATYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2F1JoACaHR0cHM6Ly93d3cudGlwbGkucm8vbWFnYXppbi9=
+saXRlcmEvP29wZW5EZWFsPWJsYWNrLWZyaWRheS0yMDI1LXBlLWxpdGVyYS1yby1tZWdhLXJlZH=
+VjZXJpLWktY2Fkb3VyaS03NzY0NDEmdXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmd=
+XRtX2NhbXBhaWduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNq=
+blBMWExTQkZvNWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweiNkZWFsLTc3NjQ=
+0MWNsc3AB/hh7uThQkc5HDenXcqXhnzYz0ROKo8PlzDuXH1FP4ANE/click)
+
+Black Friday =F0=9F=92=A3
+
+alt
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCAUYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWR=
+pcmVjdGlvbmVhemEvYmFubmVyLzEyODI4P3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bm=
+V3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJ=
+mF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0=
+dmUwT0g3dWVZcHo/yA2u2bjvucN4Y-a0VxfEPsm4QTlzv073EngxkGGx_tE/click)
+
+TEMU - Reduceri de Black Friday de p=C3=A2n=C4=83 la 80 % (https://tipli.t.=
+mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-=
+BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAVYWF=
+lY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZW=
+lkX3VsIMChB2Nsc3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvY=
+mFubmVyLzEyODI4P3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVt=
+PWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUN=
+iajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/r3=
+O2L0b0tArES1wm-yd8eVFyvE37e9xUStHHx431vhk/click)
+
+alt
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCAWYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWR=
+pcmVjdGlvbmVhemEvYmFubmVyLzEyODUzP3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bm=
+V3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJ=
+mF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0=
+dmUwT0g3dWVZcHo/7kq9OphX6l2HZEzjhgEvNGPXHg6H9HobBdfpKyjMGDs/click)
+
+CCC - Black Friday (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxk=
+aWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21=
+haWwuY29tZ2lkX3NlbmQg6--uA2JscCAXYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaW=
+Rfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmzAFodHRwczovL3d3d=
+y50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEyODUzP3NvdXJjZT1uZXdzbGV0dGVy=
+JnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTE=
+wOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UG=
+xtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/crTIegPdC55wnjPhuIai5c9CjKB7tib814IXfpkGz=
+xg/click)
+
+alt
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCAYYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWR=
+pcmVjdGlvbmVhemEvYmFubmVyLzEyODMzP3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bm=
+V3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJ=
+mF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0=
+dmUwT0g3dWVZcHo/fa6ZlCetTeqGK9DPfZqDPm4XKeOYLm2KH3K4bBzEshU/click)
+
+Fashion Days - Black Friday (https://tipli.t.mailkit.eu/PfNybCUA9AL5AnwoKhB=
+maWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybG=
+FwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwIBlhYWVjbGlja2Nsb2NlZGF0YTFkY=
+2hhbmVlbWFpbAF68HJzbWRrMjUxNjY2NDQ0ODJjY2lkZDk2MTFlaWRfdWwgwKEHYXUmzAFodHRw=
+czovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEyODMzP3NvdXJjZT1uZXd=
+zbGV0dGVyJnV0bV9zb3VyDRYFECxtZWRpdW09ZW1haWwFEfBnY2FtcGFpZ249Uk8tMjAyNTExMD=
+ktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUExYTFNCRm81YURvTXBYYkxuelBsb=
+W95bFNsYnJaaDZCNHZlME9IN3VlWXB6Y2xzcAE/LgOlmLbJNJyXEdVC3c0t2T2hoGpzkB8SFuKL=
+93eKt-4/click)
+
+alt
+ (https://tipli.t.mailkit.eu/PfNybCUA9AL5AnwoKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwIBphYWVjbGlja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbAF68HJzbWRrMjUx=
+NjY2NDQ0ODJjY2lkZDk2MTFlaWRfdWwgwKEHYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWR=
+pcmVjdGlvbmVhemEvYmFubmVyLzEyODY1P3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyDRYFEC=
+xtZWRpdW09ZW1haWwFEfBnY2FtcGFpZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZhT=
+TF1Y21DYmoyNW9OM2puUExYTFNCRm81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3Vl=
+WXB6Y2xzcAE/kkbkRPE_ubv12PXD-CiIT5UuFgQUfXkivFJlkdU_OZU/click)
+
+Dr.Max - Reduceri de p=C3=A2n=C4=83 la 75% (https://tipli.t.mailkit.eu/PfNy=
+bAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmF=
+ld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAbYWFlY2xpY2tjbG9jZW=
+RhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc=
+3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEyODY1=
+P3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9=
+jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTF=
+hMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/EvNN2sKxJPZ5XmHjN=
+r3IBn3QQNc5Fm87GS0wgOzg2S0/click)
+
+Toate cupoanele pe Tipli =E2=80=BA=E2=80=BA
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCAcYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmngFodHRwczovL3d3dy50aXBsaS5yby8_dXR=
+tX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPVJPLTIwMjUxMTA5LU=
+JGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb01wWGJMbnpQbG1ve=
+WxTbGJyWmg2QjR2ZTBPSDd1ZVlweg/EP3MghryvU5wN_rrTYhEdS8etdrkkPkgn9nuSEFkdUU/c=
+lick)
+
+
+=C3=8Encepe=C8=9Bi s=C4=83 economisi=C8=9Bi =C8=99i la cump=C4=83r=C4=83tur=
+ile de pe mobil!
+--------------------------------------------------------
+
+iOS app
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCAdYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2F1JjVodHRwczovL2FwcHMuYXBwbGUuY29tL2N6L2FwcC9=
+0aXBsaS9pZDE0OTIyODg3OTY_bXQ9OGNsc3AB/-B_p_3zGBc1ZE5x44PTItzHzVdLpOpLT2TIcz=
+Fn2wIo/click)
+
+Android app
+ (https://tipli.t.mailkit.eu/PfNybCUArwO6A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AW=
+NhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21na=
+WRfc2VuZCDr764DYmxwIB5hYWVjbGlja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbAF68HVzbWRrMjUx=
+NjY2NDQ0ODJjY2lkZDk2MTFlaWRfdWwgwKEHYXUmjQJodHRwczovL3BsYXkuZ29vZ2xlLmNvbS9=
+zdG9yZS9hcHBzL2RldGFpbHM_aWQ9Y3oudGlwbGkuYW5kcm9pZC5hcHAmYW1wJTNCaGw9Y3MmCQ=
+wscGNhbXBhaWduaWQ9HQzwgU1LVC1PdGhlci1nbG9iYWwtYWxsLWNvLXBydG5yLXB5LVBhcnRCY=
+WRnZS1NYXIyNTE1LTEmYXQ9WUlFNXVoTUhValZqc1pJaTRFV0pTbmdscWNvSzg1QkEmdXRtX3Nv=
+dXJjZT1ub3RpZmljYXRpb24mdXRtX21lZGl1bT1lbWFpbCYBKQRjYQmcXD1yZWdpc3RyYXRpb24=
+tZW1haWxjbHNwAQ/ZrOi4dj31VZ4j5t4FQsJT2cUJVIfF7V93UZOqaNWLJM/click)
+
+Cum func=C8=9Bioneaz=C4=83 (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21z=
+ZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2N=
+hcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAfYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW=
+1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2F1Jq4BaHR0cHM6Ly93d=
+3cudGlwbGkucm8vY3VtLWZ1bmN0aW9uZWF6YT91dG1fc291cmNlPW5ld3MmdXRtX21lZGl1bT1l=
+bWFpbCZ1dG1fY2FtcGFpZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmo=
+yNW9OM2puUExYTFNCRm81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3VlWXB6Y2xzcA=
+E/BBYHedfxLw1MHgKQqPisefHI9jl0Csd4_wxKeZqjC9o/click)
+| Ave=C8=9Bi nevoie de ajutor? (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlk=
+X21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGx=
+vc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAgYWFlY2xpY2tjbG9jZWRhdGExZGNoYW=
+5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmpQFod=
+HRwczovL3d3dy50aXBsaS5yby9jb250YWN0P3V0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVt=
+YWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI=
+1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/nERDAF=
+eJjaOHKqbpmOthPMtUq5nYeZCOfIwvySiyJ0I/click)
+| Contul meu (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdC=
+DM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY=
+29tZ2lkX3NlbmQg6--uA2JscCAhYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21k=
+azI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2F1JqcBaHR0cHM6Ly93d3cudGlwbGkucm8=
+vcmVjb21lbnNlP3V0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj=
+1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhR=
+G9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHpjbHNwAQ/EwMD3bZTa15gd_G60qEQt=
+V0BzbXieKlSLZXbVFQYYmg/click)
+
+Copyright =C2=A9 2025 Tipli s.r.o. Toate drepturile rezervate. Acest e-mail=
+ a
+fost trimis pe baza =C3=AEnregistr=C4=83rii dvs. pe portalul de cashback
+www.tipli.ro. Pentru a v=C4=83 dezabona de la e-mailuri similare click aici=
+ (https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZD=
+E0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3Nlb=
+mQg6--uA2JscCAiYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0=
+NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmuQFodHRwczovL3d3dy50aXBsaS5yby9kZXp=
+hYm9uYXJlLWVtYWlsL25ld3NsZXR0ZXI_dXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haW=
+wmdXRtX2NhbXBhaWduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvT=
+jNqblBMWExTQkZvNWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweg/9p3HrWrGc=
+JdyV02K-BbqgtJ2pQilzIX0kNFd1WE29dQ/click)
+
+Informa=C8=9Bii despre noi: Tipli s.r.o. =C2=B7 I=C4=8C: 05399092 =C2=B7 Na=
+ po=C5=99=C3=AD=C4=8D=C3=AD 1067/25 =C2=B7
+Praha 1 11000 =C2=B7 Czech Republic
+
+De asemenea, v=C4=83 pute=C8=9Bi dezabona aici (%5BSIGNOUT%5D)
+
+
+ You can stop receiving newsletters by visiting https://tipli.u.mailkit.eu/=
+mc/VLCCVLWL/GJIASRPQSCJGLUEONK/VLCPPPEEEMV
+
+------------=_1762676086-3654251-1848
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html> <html lang=3D"und" dir=3D"auto" xmlns=3D"http://www.w3.org/=
+1999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schema=
+s-microsoft-com:office:office"> <head> <title>=E2=8F=B0 Ultima =C8=99ans=C4=
+=83 - Black Friday se apropie de final =F0=9F=92=A3</title> <!--[if !mso]><=
+!--> <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"> <!--<![end=
+if]--> <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUT=
+F-8"> <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1"> <style type=3D"text/css"> #outlook a { padding:0; } body { margin:0=
+;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; } table=
+, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; =
+} img { border:0;height:auto;line-height:100%; outline:none;text-decoration=
+:none;-ms-interpolation-mode:bicubic; } p { display:block;margin:13px 0; } =
+</style> <!--[if mso]> <noscript> <xml> <o:OfficeDocumentSettings> <o:Allow=
+PNG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </x=
+ml> </noscript> <![endif]--> <!--[if lte mso 11]> <style type=3D"text/css">=
+ .mj-outlook-group-fix { width:100% !important; } </style> <![endif]--> <!-=
+-[if !mso]><!--> <link href=3D"https://fonts.googleapis.com/css?family=3DRo=
+boto:300,400,700,900&amp;subset=3Dlatin-ext" rel=3D"stylesheet" type=3D"tex=
+t/css"> <link href=3D"https://fonts.googleapis.com/css?family=3DUbuntu:300,=
+400,500,700" rel=3D"stylesheet" type=3D"text/css"> <style type=3D"text/css"=
+> @import url(https://fonts.googleapis.com/css?family=3DRoboto:300,400,700,=
+900&amp;subset=3Dlatin-ext); @import url(https://fonts.googleapis.com/css?f=
+amily=3DUbuntu:300,400,500,700); </style> <!--<![endif]--> <style type=3D"t=
+ext/css"> @media only screen and (min-width:480px) { .mj-column-per-100 { w=
+idth:100% !important; max-width: 100%; } .mj-column-per-18 { width:18% !imp=
+ortant; max-width: 18%; } .mj-column-per-49 { width:49% !important; max-wid=
+th: 49%; } .mj-column-per-33 { width:33% !important; max-width: 33%; } .mj-=
+column-per-50 { width:50% !important; max-width: 50%; } .mj-column-per-49-5=
+ { width:49.5% !important; max-width: 49.5%; } } </style> <style media=3D"s=
+creen and (min-width:480px)"> .moz-text-html .mj-column-per-100 { width:100=
+% !important; max-width: 100%; } .moz-text-html .mj-column-per-18 { width:1=
+8% !important; max-width: 18%; } .moz-text-html .mj-column-per-49 { width:4=
+9% !important; max-width: 49%; } .moz-text-html .mj-column-per-33 { width:3=
+3% !important; max-width: 33%; } .moz-text-html .mj-column-per-50 { width:5=
+0% !important; max-width: 50%; } .moz-text-html .mj-column-per-49-5 { width=
+:49.5% !important; max-width: 49.5%; } </style> <style type=3D"text/css"> @=
+media only screen and (max-width:479px) { table.mj-full-width-mobile { widt=
+h: 100% !important; } td.mj-full-width-mobile { width: auto !important; } }=
+ </style> <style type=3D"text/css"> .desktop-img img { display: block !impo=
+rtant; max-height: none !important; overflow: visible !important; } .mobile=
+-img img { display: none !important; } .desktop-img td { overflow: hidden; =
+border-radius: 15px; } .mobile-img td { overflow: hidden; border-radius: 15=
+px; } @media all and (max-width:590px) { .desktop-img img { display: none !=
+important; } .mobile-img img { display: block !important; max-height: none =
+!important; overflow: visible !important; } .shop-row { padding: 1px 0 1px =
+0; } .two-column:nth-child(odd) { margin-right: 1px; } .two-column:nth-chil=
+d(even) { margin-left: 1px; } } .shop-row { padding: 4px 0 4px 0; } .shop-r=
+ow:last-child { padding-bottom: 0; } .two-column:nth-child(odd) { margin-ri=
+ght: 4px; } .two-column:nth-child(even) { margin-left: 4px; } .two-column .=
+image table td { width:200px !important; } .shop-border { border: 2px solid=
+ #dbdbdb; border-radius: 0.75rem !important; padding: 30px 0 30px 0; margin=
+:0; } .three-column { padding-top: 20px; padding-bottom: 20px; } .three-col=
+umn:nth-child(2) { margin-right: 8px; margin-left: 8px; } .four-column { pa=
+dding-top: 20px; padding-bottom: 20px; } .four-column:nth-child(2) { margin=
+-right: 4px; margin-left: 8px; } .four-column:nth-child(3) { margin-right: =
+8px; margin-left: 4px; } ._value { font-weight: 700; color: #66B940; } ._sy=
+mbol { line-height: 1.75rem; font-weight: 700; color: #66B940; } .two-colum=
+n ._upTo { font-size: 18px; } .two-column ._value { font-size: 33px; } .two=
+-column ._symbol { font-size: 33px; } .two-column ._suffix { font-size: 18p=
+x; } .three-column ._upTo { font-size: 15px; } .three-column ._value { font=
+-size: 26px; } .three-column ._symbol { font-size: 26px; } .three-column ._=
+suffix { font-size: 15px; } .four-column ._upTo { font-size: 14px; } .four-=
+column ._value { font-size: 18px; } .four-column ._symbol { font-size: 18px=
+; } .four-column ._suffix { font-size: 14px; } ._suffix { display: block; }=
+ ._value, ._symbol { color: #66b940; } .deal ._upTo { color: #646c7c; } .de=
+al ._suffix { display: inline; font-weight:normal; color: #646c7c; } .deal =
+._value, .deal ._symbol { font-weight:normal; color: #66b940; } .border:nth=
+-child(odd) { margin-right: 23px; } .text p { margin: 0; } </style> </head>=
+ <body style=3D"word-spacing:normal;background-color:#ffffff;"> <div style=
+=3D"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px=
+;max-width:0px;opacity:0;overflow:hidden;">P=C3=A2n=C4=83 la 8=EF=B8=8F=E2=
+=83=A30=EF=B8=8F=E2=83=A3% reducere =E2=80=93 se termin=C4=83 azi! <!-- Pre=
+header white spaces --> <div style=3D"display: none; max-height: 0px; overf=
+low: hidden;"> &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#81=
+99;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#=
+847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; =
+&#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#819=
+9;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#8=
+47; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &=
+#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199=
+;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#84=
+7; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#=
+8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;=
+&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847=
+; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8=
+199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&=
+#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847;=
+ &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#81=
+99;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#=
+847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; =
+&#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#819=
+9;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#8=
+47; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &=
+#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199=
+;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#84=
+7; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#=
+8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;=
+&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847=
+; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8199;&#847; &#8=
+199;&#847; &#8199;&#847; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy;=
+ &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &s=
+hy; &shy; &shy; &shy; &shy; &shy; &shy; </div></div> <div aria-roledescript=
+ion=3D"email" style=3D"background-color:#ffffff;" role=3D"article" lang=3D"=
+und" dir=3D"auto"> <!-- Pre header --><!-- <mj-section padding=3D"0">--><!-=
+- <mj-text align=3D"center" color=3D"#ebedf3">--><!-- <h1 style=3D"line-hei=
+ght: 0; font-weight: 500; font-size: 1.9em; padding: 0; margin: 0; display:=
+ none;">--><!-- P=C3=A2n=C4=83 la 8=EF=B8=8F=E2=83=A30=EF=B8=8F=E2=83=A3% r=
+educere =E2=80=93 se termin=C4=83 azi!</h1>--><!-- </mj-text>--><!-- </mj-s=
+ection>--><!-- End of Pre header --><!-- Header logo --> <!--[if mso | IE]>=
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"" role=3D"presentation" style=3D"width:600px;" width=3D"600" ><tr><t=
+d style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![=
+endif]--> <div style=3D"margin:0px auto;max-width:600px;"> <table align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"width:100%;"> <tbody> <tr> <td style=3D"direction:ltr;font-siz=
+e:0px;padding:10px;text-align:center;"> <!--[if mso | IE]><table role=3D"pr=
+esentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=
+=3D"" style=3D"vertical-align:top;width:580px;" ><![endif]--> <div class=3D=
+"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:=
+left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> <t=
+able border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"vertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=3D"ce=
+nter" style=3D"font-size:0px;padding:10px 25px;word-break:break-word;"> <ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" =
+style=3D"border-collapse:collapse;border-spacing:0px;"> <tbody> <tr> <td st=
+yle=3D"width:81px;"> <a href=3D"https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlk=
+X21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGx=
+vc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscAFhYWVjbGlja2Nsb2NlZGF0YTFkY2hhbm=
+VlbWFpbGZpZF9zbWRrMjUxNjY2NDQ0ODJjY2lkZDk2MTFlaWRfdWwgwKEHY2xzcAFhdSaeAWh0d=
+HBzOi8vd3d3LnRpcGxpLnJvLz91dG1fc291cmNlPW5ld3MmdXRtX21lZGl1bT1lbWFpbCZ1dG1f=
+Y2FtcGFpZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUEx=
+YTFNCRm81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3VlWXB6/x-pH7-IY_ZNU1ffiL=
+XnW0Flw8aiZ1xjv7SXdF70kyTQ/click" target=3D"_blank" title=3D"Tipli" style=
+=3D"color: #EF7F1A; text-decoration: underline;"> <img alt=3D"Tipli" src=3D=
+"https://www.tipli.cz/images/logo-1.png" style=3D"border:none;display:block=
+;outline:none;text-decoration:none;height:40px;width:100%;font-size:13px;" =
+title=3D"Tipli" width=3D"81" height=3D"40"> </a> </td> </tr> </tbody> </tab=
+le> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></tabl=
+e><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td>=
+</tr></table><![endif]--> <!-- End of Header logo --><!-- Header cover --> =
+<!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:600px;" wid=
+th=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-=
+rule:exactly;"><![endif]--> <div style=3D"margin:0px auto;max-width:600px;"=
+> <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"width:100%;"> <tbody> <tr> <td style=3D"dire=
+ction:ltr;font-size:0px;padding:0 10px;text-align:center;"> <!--[if mso | I=
+E]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:580px;" ><![end=
+if]--> <div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-=
+size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:=
+top;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"> <tbody> =
+<tr> <td align=3D"center" style=3D"font-size:0px;padding:15px 0 15px 0;word=
+-break:break-word;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" style=3D"border-collapse:collapse;border-spacing:0p=
+x;"> <tbody> <tr> <td style=3D"width:580px;"> <a href=3D"https://tipli.t.ma=
+ilkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BG=
+J0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscAJhYWVjb=
+Glja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbGZpZF9zbWRrMjUxNjY2NDQ0ODJjY2lkZDk2MTFlaWRf=
+dWwgwKEHYXUmvAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvbWFnYXppbi9=
+zaW5zYXk_dXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPVJPLT=
+IwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb01wW=
+GJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlwemNsc3AB/s5YTW8EwGl20ylzqemmHTHK-e3H=
+NKBrigc-8Qva3QDk/click" target=3D"_blank" style=3D"color: #EF7F1A; text-dec=
+oration: underline;"> <img alt src=3D"https://img.tiplicdn.com/zoh4eiLi/IMG=
+/7200/n635kLCIeUPAdYlaAVdT7pTB7IiuqDWaLpabK-fPzOk/resize:fit:1392:0:1/gravi=
+ty:no/quality:90/aHR0cHM6Ly93d3cudGlwbGkuY3ovdXBsb2FkL2ltYWdlcy9uZXdzbGV0dG=
+VyLzgwNjc3Ny5wbmc.png" style=3D"border:0;border-radius:1rem;display:block;o=
+utline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" wi=
+dth=3D"580" height=3D"auto"> </a> </td> </tr> </tbody> </table> </td> </tr>=
+ </tbody> </table> </div> <!--[if mso | IE]></td></tr></table><![endif]--> =
+</td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table><!=
+[endif]--> <!-- End of Header cover --><!-- Content blocks --> <table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"background:#ffffff;background-color:#ffffff;width:100%;"> =
+<tbody> <tr> <td> <!--[if mso | IE]><table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D=
+"width:600px;" width=3D"600" bgcolor=3D"#ffffff" ><tr><td style=3D"line-hei=
+ght:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--> <div styl=
+e=3D"margin:0px auto;max-width:600px;"> <table align=3D"center" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:=
+100%;"> <tbody> <tr> <td style=3D"direction:ltr;font-size:0px;padding:0 10p=
+x;text-align:center;"> <!--[if mso | IE]><table role=3D"presentation" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0"><![endif]--> <!-- Content block=
+ --><!-- Content block title --><!-- End of Content block title --><!-- Tex=
+t block--> <!--[if mso | IE]><tr><td class=3D"" width=3D"600px" ><table ali=
+gn=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" r=
+ole=3D"presentation" style=3D"width:580px;" width=3D"580" bgcolor=3D"#fffff=
+f" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exa=
+ctly;"><![endif]--> <div style=3D"background:#ffffff;background-color:#ffff=
+ff;margin:0px auto;max-width:580px;"> <table align=3D"center" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"backgrou=
+nd:#ffffff;background-color:#ffffff;width:100%;"> <tbody> <tr> <td style=3D=
+"direction:ltr;font-size:0px;padding:0;text-align:center;"> <!--[if mso | I=
+E]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:580px;" ><![end=
+if]--> <div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-=
+size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:=
+top;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"> <tbody> =
+<tr> <td align=3D"left" class=3D"text" style=3D"font-size:0px;padding:0;wor=
+d-break:break-word;"> <div style=3D"font-family:Roboto, sans-serif;font-siz=
+e:18px;font-weight:400;line-height:1.5;text-align:left;color:#080b10;"><p s=
+tyle=3D"margin-bottom: 1em;">S=C4=83 ai o zi minunat=C4=83,</p> <p style=3D=
+"margin-bottom: 0;"><strong></strong>acum este ultima =C8=99ans=C4=83 de a =
+ob=C8=9Bine cele mai bune oferte din an. Descoper=C4=83 cupoanele disponibi=
+le pe <a target=3D"_blank" data-stringify-link=3D"http://Tipli.ro" data-sk=
+=3D"tooltip_parent" href=3D"https://tipli.t.mailkit.eu/PfNybCUAxALFAnwoKhBm=
+aWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGF=
+wbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwA2FhZWNsaWNrY2xvY2VkYXRhMWRjaG=
+FuZWVtYWlsZgEu8FZtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdjbHNwAWF1JpkBa=
+HR0cDovL3RpcGxpLnJvLz91dG1fc291cmNlPW5ld3MmdXRtX21lZGl1bT0FYQUR8GJjYW1wYWln=
+bj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzV=
+hRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/OYiLWEGG2HT6RrayVTkLsoJPA3=
+SjZyuZSB9qLWRyO2U/click" rel=3D"noopener noreferrer" style=3D"color: #EF7F1=
+A; text-decoration: underline;">Tipli.ro</a> =C8=99i <strong>prime=C8=99te =
+bani =C3=AEnapoi</strong> din achizi=C8=9Biile tale. Timpul se scurge! =E2=
+=8F=B0</p></div> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></t=
+d></tr></table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if ms=
+o | IE]></td></tr></table></td></tr><tr><td class=3D"" width=3D"600px" ><ta=
+ble align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"" role=3D"presentation" style=3D"width:580px;" width=3D"580" bgcolor=3D=
+"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-r=
+ule:exactly;"><![endif]--> <div style=3D"background:#ffffff;background-colo=
+r:#ffffff;margin:0px auto;max-width:580px;"> <table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+ackground:#ffffff;background-color:#ffffff;width:100%;"> <tbody> <tr> <td s=
+tyle=3D"direction:ltr;font-size:0px;padding:20px 0 0 0;text-align:center;">=
+ <!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:=
+580px;" ><![endif]--> <div class=3D"mj-column-per-100 mj-outlook-group-fix"=
+ style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;=
+vertical-align:top;width:100%;"> <table border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"=
+100%"> <tbody> <tr> <td align=3D"center" class=3D"gradient-button" style=3D=
+"font-size:0px;padding:0;word-break:break-word;"> <table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"border-collap=
+se:separate;line-height:100%;"> <tbody> <tr> <td align=3D"center" bgcolor=
+=3D"#EF7F1A" role=3D"presentation" style=3D"border:none;border-radius:12px;=
+cursor:auto;mso-padding-alt:15px 45px;background:#EF7F1A;" valign=3D"middle=
+"> <a href=3D"https://tipli.t.mailkit.eu/PfNybCUA0QLSAnwoKhBmaWRfbXNnIJmYDG=
+RpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnb=
+WFpbC5jb21naWRfc2VuZCDr764DYmxwBGFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu=
+8F5tZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSamAWh0dHBzOi8vd3d3LnRpcGx=
+pLnJvL3JlZHVjZXJpP3V0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPQVpBRHwZ2NhbXBhaWduPV=
+JPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb=
+01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlwemNsc3AB/iXnfQ44nQm90yXzHQ4EXv8Z=
+o5Ob-jLxxmVxro-jZrrI/click" style=3D"display: inline-block; background: #EF=
+7F1A; color: #FFFFFF; font-family: Ubuntu, Helvetica, Arial, sans-serif; fo=
+nt-size: 18px; font-weight: 700; line-height: 120%; margin: 0; text-decorat=
+ion: none; text-transform: none; padding: 15px 45px; mso-padding-alt: 0px; =
+border-radius: 12px; background-image: linear-gradient(51deg, #EF7F1A, #FFA=
+439); background-color: #ff7e5f;" target=3D"_blank"> Ultima strigare: Cupoa=
+ne Black Friday =E2=80=BA=E2=80=BA </a> </td> </tr> </tbody> </table> </td>=
+ </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table><![endi=
+f]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></ta=
+ble></td></tr><![endif]--> <!-- End of Text block--> <!--[if mso | IE]><tr>=
+<td class=3D"" width=3D"600px" ><table align=3D"center" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"wid=
+th:580px;" width=3D"580" ><tr><td style=3D"line-height:0px;font-size:0px;ms=
+o-line-height-rule:exactly;"><![endif]--> <div style=3D"margin:0px auto;max=
+-width:580px;"> <table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"width:100%;"> <tbody> <tr> <td=
+ style=3D"direction:ltr;font-size:0px;padding:30px 0 0 0;text-align:center;=
+"> <!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr></tr></table><![endif]--> </td> </tr> </tbody>=
+ </table> </div> <!--[if mso | IE]></td></tr></table></td></tr><![endif]-->=
+ <!-- <mj-divider border-width=3D"1px" border-style=3D"dashed"></mj-divider=
+>--><!-- Content block title --> <!--[if mso | IE]><tr><td class=3D"" width=
+=3D"600px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" class=3D"" role=3D"presentation" style=3D"width:580px;" width=3D"=
+580" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;"><![endif]--> <div style=3D"margin:0px auto;max-width:580px;"> <tab=
+le align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"width:100%;"> <tbody> <tr> <td style=3D"directio=
+n:ltr;font-size:0px;padding:5px 0 15px 0;text-align:center;"> <!--[if mso |=
+ IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:580px;" ><![en=
+dif]--> <div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font=
+-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align=
+:top;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"> <tbody>=
+ <tr> <td align=3D"center" style=3D"font-size:0px;padding:0;word-break:brea=
+k-word;"> <div style=3D"font-family:Roboto, sans-serif;font-size:26px;font-=
+weight:600;line-height:1.5;text-align:center;color:#080b10;">Cupoane de red=
+ucere =E2=8F=B0</div> </td> </tr> </tbody> </table> </div> <!--[if mso | IE=
+]></td></tr></table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[=
+if mso | IE]></td></tr></table></td></tr><![endif]--> <!-- End of Content b=
+lock title --><!-- Deals block--> <!--[if mso | IE]><tr><td class=3D"" widt=
+h=3D"600px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" class=3D"" role=3D"presentation" style=3D"width:580px;" width=3D=
+"580" bgcolor=3D"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0px;m=
+so-line-height-rule:exactly;"><![endif]--> <div style=3D"background:#ffffff=
+;background-color:#ffffff;margin:0px auto;max-width:580px;"> <table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"background:#ffffff;background-color:#ffffff;width:100%;"> =
+<tbody> <tr> <td style=3D"border:0px solid;direction:ltr;font-size:0px;padd=
+ing:8px;text-align:center;"> <!--[if mso | IE]><table role=3D"presentation"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=
+=3D"vertical-align:middle;width:101.52px;" ><![endif]--> <div class=3D"mj-c=
+olumn-per-18 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;d=
+irection:ltr;display:inline-block;vertical-align:middle;width:100%;"> <tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"vertical-align:middle;" width=3D"100%"> <tbody> <tr> <td align=3D"le=
+ft" style=3D"font-size:0px;padding:8px;word-break:break-word;"> <table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"border-collapse:collapse;border-spacing:0px;"> <tbody> <tr> <td style=3D"w=
+idth:85px;"> <a href=3D"https://tipli.t.mailkit.eu/PfNybCUAsgO8A3woKhBmaWRf=
+bXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9=
+zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwBWFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZW=
+VtYWlsZgEu8GNtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaQAmh0dHBzOi8vd=
+3d3LnRpcGxpLnJvL21hZ2F6aW4vc2Ftc3VuZy8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLXNhBR8w=
+LWRlLXBhbi1sYS00MAEGGHNla2VjaWEFGBRyb2R1c2UBC4BibGFjay1kYXlzLTc3NzYyNiZ1dG1=
+fc291cmNlPW5ld3MFEBhtZWRpdW09BccFEWBjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwAWPwVm=
+wyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoN=
+kI0dmUwT0g3dWVZcHojZGVhbC03Nzc2MjZjbHNwAQ/Nu5fu3R8Bc84w5zSygEk1RdD6_HgNUFFj=
+1GfJ16WdV4/click" target=3D"_blank" style=3D"color: #EF7F1A; text-decoratio=
+n: underline;"> <img alt=3D"$deal->name" src=3D"https://img.tiplicdn.com/zo=
+h4eiLi/IMG/7200/09uUBUNVHDddKKZTVUlhd-hyDr6FJmc5pjU58qVJb6E/resize:fit:480:=
+0:1/gravity:no/quality:100/aHR0cHM6Ly93d3cudGlwbGkuY3ovYXBpL3YxL3Nob3AtaW1h=
+Z2UvMTEyMTE.png" style=3D"border:0;display:block;outline:none;text-decorati=
+on:none;height:auto;width:100%;font-size:13px;" width=3D"85" height=3D"auto=
+"> </a> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table> </div> =
+<!--[if mso | IE]></td><td class=3D"" style=3D"vertical-align:middle;width:=
+276.36px;" ><![endif]--> <div class=3D"mj-column-per-49 mj-outlook-group-fi=
+x" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-bloc=
+k;vertical-align:middle;width:100%;"> <table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" width=3D"100%"> <tbody> <tr> <td s=
+tyle=3D"vertical-align:middle;padding:8px 16px;"> <table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" style width=3D"100%"> =
+<tbody> <tr> <td align=3D"left" style=3D"font-size:0px;padding:0px;word-bre=
+ak:break-word;"> <div style=3D"font-family:Ubuntu, Helvetica, Arial, sans-s=
+erif;font-size:16px;line-height:1.3;text-align:left;color:#080b10;"><a href=
+=3D"https://tipli.t.mailkit.eu/PfNybCUAsgO8A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5=
+AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21=
+naWRfc2VuZCDr764DYmxwBmFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GNtZGsyNT=
+E2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaQAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ=
+2F6aW4vc2Ftc3VuZy8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLXNhBR8wLWRlLXBhbi1sYS00MAEG=
+GHNla2VjaWEFGBRyb2R1c2UBC4BibGFjay1kYXlzLTc3NzYyNiZ1dG1fc291cmNlPW5ld3MFEBh=
+tZWRpdW09BccFEWBjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwAWPwVmwyJmF0PWtuNmFNMXVjbU=
+NiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZ=
+GVhbC03Nzc2MjZjbHNwAQ/kFAPsYj1RIpGHx3Ga7Dhmb0gbGVWzDiDiYsX7EynX_Q/click" st=
+yle=3D"color: #080b10; text-decoration: none;"> Cod <strong>reducere</stron=
+g> Samsung de p=C3=A2n=C4=83 la <strong>40%</strong> la sekec=C8=9Bia de pr=
+oduse de Black Days =C2=BB </a></div> </td> </tr> <tr> <td align=3D"left" c=
+lass=3D"deal" style=3D"font-size:0px;padding:5px 0 0 0;word-break:break-wor=
+d;"> <div style=3D"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-si=
+ze:14px;font-weight:600;line-height:1.3;text-align:left;color:#66b940;"><sp=
+an class=3D"_upTo">p=C3=A2n=C4=83 la</span> <span class=3D"_value">1</span>=
+&nbsp;<span class=3D"_symbol">%</span> <span class=3D"_suffix">=C3=AEnapoi<=
+/span></div> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table> </=
+div> <!--[if mso | IE]></td><td class=3D"" style=3D"vertical-align:middle;w=
+idth:186.12px;" ><![endif]--> <div class=3D"mj-column-per-33 mj-outlook-gro=
+up-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline=
+-block;vertical-align:middle;width:100%;"> <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:midd=
+le;" width=3D"100%"> <tbody> <tr> <td align=3D"left" style=3D"font-size:0px=
+;padding:0;word-break:break-word;"> <div style=3D"font-family:Ubuntu, Helve=
+tica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:=
+#000000;"><a href=3D"https://tipli.t.mailkit.eu/PfNybCUAsgO8A3woKhBmaWRfbXN=
+nIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2=
+FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwB2FhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtY=
+WlsZgEu8GNtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSaQAmh0dHBzOi8vd3d3=
+LnRpcGxpLnJvL21hZ2F6aW4vc2Ftc3VuZy8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLXNhBR8wLWR=
+lLXBhbi1sYS00MAEGGHNla2VjaWEFGBRyb2R1c2UBC4BibGFjay1kYXlzLTc3NzYyNiZ1dG1fc2=
+91cmNlPW5ld3MFEBhtZWRpdW09BccFEWBjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwAWPwVmwyJ=
+mF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0=
+dmUwT0g3dWVZcHojZGVhbC03Nzc2MjZjbHNwAQ/eNGdQ6F6DxupIg5j4hZUxF8jGOGq9Nkk6FMl=
+RPvQwPo/click" style=3D"display: inline-block; width: 160px; height: 51px; =
+line-height: 51px; text-align: left; background: url('https://www.tipli.ro/=
+images/coupon-bg.png') no-repeat center; background-size: 100% 100%; backgr=
+ound-repeat: no-repeat; color: white; text-decoration: none; font-weight: b=
+old; background-color: #f69028; border-radius: 12px; font-size: 16px; paddi=
+ng-left: 20px;"> Ob=C8=9Bine un cupon </a></div> </td> </tr> </tbody> </tab=
+le> </div> <!--[if mso | IE]></td></tr></table><![endif]--> </td> </tr> </t=
+body> </table> </div> <!--[if mso | IE]></td></tr></table></td></tr><tr><td=
+ class=3D"" width=3D"600px" ><table align=3D"center" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:=
+580px;" width=3D"580" ><tr><td style=3D"line-height:0px;font-size:0px;mso-l=
+ine-height-rule:exactly;"><![endif]--> <div style=3D"margin:0px auto;max-wi=
+dth:580px;"> <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" role=3D"presentation" style=3D"width:100%;"> <tbody> <tr> <td st=
+yle=3D"direction:ltr;font-size:0px;padding:10px 0 10px 0;text-align:center;=
+"> <!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;wid=
+th:580px;" ><![endif]--> <div class=3D"mj-column-per-100 mj-outlook-group-f=
+ix" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-blo=
+ck;vertical-align:top;width:100%;"> <table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" width=3D"100%"> <tbody> <tr> <td sty=
+le=3D"vertical-align:top;padding:0;"> <table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style width=3D"100%"> <tbody> <tr>=
+ <td align=3D"center" style=3D"font-size:0px;padding:0;word-break:break-wor=
+d;"> <p style=3D"margin-bottom: 0; border-top: solid 1px #f0f0f0; font-size=
+: 1px; margin: 0px auto; width: 100%;"> </p> <!--[if mso | IE]><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"borde=
+r-top:solid 1px #f0f0f0;font-size:1px;margin:0px auto;width:580px;" role=3D=
+"presentation" width=3D"580px" ><tr><td style=3D"height:0;line-height:0;"> =
+&nbsp; </td></tr></table><![endif]--> </td> </tr> </tbody> </table> </td> <=
+/tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table><![endif]=
+--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></tabl=
+e></td></tr><tr><td class=3D"" width=3D"600px" ><table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentati=
+on" style=3D"width:580px;" width=3D"580" bgcolor=3D"#ffffff" ><tr><td style=
+=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-=
+-> <div style=3D"background:#ffffff;background-color:#ffffff;margin:0px aut=
+o;max-width:580px;"> <table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"background:#ffffff;backgr=
+ound-color:#ffffff;width:100%;"> <tbody> <tr> <td style=3D"border:0px solid=
+;direction:ltr;font-size:0px;padding:8px;text-align:center;"> <!--[if mso |=
+ IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0"><tr><td class=3D"" style=3D"vertical-align:middle;width:101.52px;" =
+><![endif]--> <div class=3D"mj-column-per-18 mj-outlook-group-fix" style=3D=
+"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-=
+align:middle;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" style=3D"vertical-align:middle;" width=3D"100=
+%"> <tbody> <tr> <td align=3D"left" style=3D"font-size:0px;padding:8px;word=
+-break:break-word;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" style=3D"border-collapse:collapse;border-spacing:0p=
+x;"> <tbody> <tr> <td style=3D"width:85px;"> <a href=3D"https://tipli.t.mai=
+lkit.eu/PfNybCUAsgO0A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX=
+19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwCG=
+FhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxM=
+WVpZF91bCDAoQdhdSaIAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F6aW4vc2luc2F5Lz9vcGVu=
+RGVhbD1jb2QtcmVkdWNlcmUtCR7wQi01MC1sYS1maWVjYXJlLWFsLWRvaWxlYS1hcnRpY29sLW1=
+haS1pZWZ0aW4tNzc3NTk1JnV0bV9zb3VyY2U9bmV3cyYBEBhtZWRpdW09Bb8AJgER8HNjYW1wYW=
+lnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGb=
+zVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03Nzc1OTVjbHNwAQ/5=
+Wv6xU7mtsy-U5kHmWzNP9O0IBhTorerC9Tmzpgsr3k/click" target=3D"_blank" style=
+=3D"color: #EF7F1A; text-decoration: underline;"> <img alt=3D"$deal->name" =
+src=3D"https://img.tiplicdn.com/zoh4eiLi/IMG/7200/czcx9C-tiQ88D5smCkbTX4nrk=
+cj9GGuNRV-lELZnP_A/resize:fit:480:0:1/gravity:no/quality:100/aHR0cHM6Ly93d3=
+cudGlwbGkuY3ovYXBpL3YxL3Nob3AtaW1hZ2UvODE1OQ.png" style=3D"border:0;display=
+:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:1=
+3px;" width=3D"85" height=3D"auto"> </a> </td> </tr> </tbody> </table> </td=
+> </tr> </tbody> </table> </div> <!--[if mso | IE]></td><td class=3D"" styl=
+e=3D"vertical-align:middle;width:276.36px;" ><![endif]--> <div class=3D"mj-=
+column-per-49 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;=
+direction:ltr;display:inline-block;vertical-align:middle;width:100%;"> <tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" w=
+idth=3D"100%"> <tbody> <tr> <td style=3D"vertical-align:middle;padding:8px =
+16px;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style width=3D"100%"> <tbody> <tr> <td align=3D"left" style=3D"f=
+ont-size:0px;padding:0px;word-break:break-word;"> <div style=3D"font-family=
+:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1.3;text-a=
+lign:left;color:#080b10;"><a href=3D"https://tipli.t.mailkit.eu/PfNybCUAswO=
+0A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYW=
+V3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwCWFhZWNsaWNrY2xvY2VkY=
+XRhMWRjaGFuZWVtYWlsZgEu8GZtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdjbHNw=
+AWF1JogCaHR0cHM6Ly93d3cudGlwbGkucm8vbWFnYXppbi9zaW5zYXkvP29wZW5EZWFsPWNvZC1=
+yZWR1Y2VyZS1zBR7wQi01MC1sYS1maWVjYXJlLWFsLWRvaWxlYS1hcnRpY29sLW1haS1pZWZ0aW=
+4tNzc3NTk1JnV0bV9zb3VyY2U9bmV3cyYBEBhtZWRpdW09BcQAJgER8G5jYW1wYWlnbj1STy0yM=
+DI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhi=
+TG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03Nzc1OTU/obYQ9VqQ2Vv-yYbOB15=
+5N4qfxufRf1etxL8hS3L0jow/click" style=3D"color: #080b10; text-decoration: n=
+one;"> Cod <strong>reducere</strong> Sinsay <strong>50%</strong> la fiecare=
+ al doilea articol, mai ieftin =C2=BB </a></div> </td> </tr> <tr> <td align=
+=3D"left" class=3D"deal" style=3D"font-size:0px;padding:5px 0 0 0;word-brea=
+k:break-word;"> <div style=3D"font-family:Ubuntu, Helvetica, Arial, sans-se=
+rif;font-size:14px;font-weight:600;line-height:1.3;text-align:left;color:#6=
+6b940;"><span class=3D"_value">7,008</span>&nbsp;<span class=3D"_symbol">%<=
+/span> <span class=3D"_suffix">=C3=AEnapoi</span></div> </td> </tr> </tbody=
+> </table> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td><td =
+class=3D"" style=3D"vertical-align:middle;width:186.12px;" ><![endif]--> <d=
+iv class=3D"mj-column-per-33 mj-outlook-group-fix" style=3D"font-size:0px;t=
+ext-align:left;direction:ltr;display:inline-block;vertical-align:middle;wid=
+th:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" style=3D"vertical-align:middle;" width=3D"100%"> <tbody> <tr>=
+ <td align=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word;=
+"> <div style=3D"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size=
+:13px;line-height:1;text-align:left;color:#000000;"><a href=3D"https://tipl=
+i.t.mailkit.eu/PfNybCUAsgO0A3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES=
+8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764=
+DYmxwCmFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2NjY0NDQ4MmNjaW=
+RkOTYxMWVpZF91bCDAoQdhdSaIAmh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F6aW4vc2luc2F5L=
+z9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtCR7wQi01MC1sYS1maWVjYXJlLWFsLWRvaWxlYS1hcnRp=
+Y29sLW1haS1pZWZ0aW4tNzc3NTk1JnV0bV9zb3VyY2U9bmV3cyYBEBhtZWRpdW09Bb8AJgER8HN=
+jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTF=
+hMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03Nzc1OTVjb=
+HNwAQ/ifLIs83VjOSz7lsh0HNXciEPitOn2U1pG2pfcjpWUMs/click" style=3D"display: =
+inline-block; width: 160px; height: 51px; line-height: 51px; text-align: le=
+ft; background: url('https://www.tipli.ro/images/coupon-bg.png') no-repeat =
+center; background-size: 100% 100%; background-repeat: no-repeat; color: wh=
+ite; text-decoration: none; font-weight: bold; background-color: #f69028; b=
+order-radius: 12px; font-size: 16px; padding-left: 20px;"> Ob=C8=9Bine un c=
+upon </a></div> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td=
+></tr></table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso=
+ | IE]></td></tr></table></td></tr><tr><td class=3D"" width=3D"600px" ><tab=
+le align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"" role=3D"presentation" style=3D"width:580px;" width=3D"580" ><tr><td s=
+tyle=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![end=
+if]--> <div style=3D"margin:0px auto;max-width:580px;"> <table align=3D"cen=
+ter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"width:100%;"> <tbody> <tr> <td style=3D"direction:ltr;font-size:0=
+px;padding:10px 0 10px 0;text-align:center;"> <!--[if mso | IE]><table role=
+=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td =
+class=3D"" style=3D"vertical-align:top;width:580px;" ><![endif]--> <div cla=
+ss=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-a=
+lign:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;=
+"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"100%"> <tbody> <tr> <td style=3D"vertical-align:top;padding:=
+0;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style width=3D"100%"> <tbody> <tr> <td align=3D"center" style=3D"fo=
+nt-size:0px;padding:0;word-break:break-word;"> <p style=3D"margin-bottom: 0=
+; border-top: solid 1px #f0f0f0; font-size: 1px; margin: 0px auto; width: 1=
+00%;"> </p> <!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" style=3D"border-top:solid 1px #f0f0f0;font-size=
+:1px;margin:0px auto;width:580px;" role=3D"presentation" width=3D"580px" ><=
+tr><td style=3D"height:0;line-height:0;"> &nbsp; </td></tr></table><![endif=
+]--> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table> </div> <!-=
+-[if mso | IE]></td></tr></table><![endif]--> </td> </tr> </tbody> </table>=
+ </div> <!--[if mso | IE]></td></tr></table></td></tr><tr><td class=3D"" wi=
+dth=3D"600px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:580px;" width=
+=3D"580" bgcolor=3D"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0p=
+x;mso-line-height-rule:exactly;"><![endif]--> <div style=3D"background:#fff=
+fff;background-color:#ffffff;margin:0px auto;max-width:580px;"> <table alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"background:#ffffff;background-color:#ffffff;width:100%;">=
+ <tbody> <tr> <td style=3D"border:0px solid;direction:ltr;font-size:0px;pad=
+ding:8px;text-align:center;"> <!--[if mso | IE]><table role=3D"presentation=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=
+=3D"vertical-align:middle;width:101.52px;" ><![endif]--> <div class=3D"mj-c=
+olumn-per-18 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;d=
+irection:ltr;display:inline-block;vertical-align:middle;width:100%;"> <tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"vertical-align:middle;" width=3D"100%"> <tbody> <tr> <td align=3D"le=
+ft" style=3D"font-size:0px;padding:8px;word-break:break-word;"> <table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"border-collapse:collapse;border-spacing:0px;"> <tbody> <tr> <td style=3D"w=
+idth:85px;"> <a href=3D"https://tipli.t.mailkit.eu/PfNybCUAowOpA3woKhBmaWRf=
+bXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9=
+zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwC2FhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZW=
+VtYWlsZgEu8GBtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSb9AWh0dHBzOi8vd=
+3d3LnRpcGxpLnJvL21hZ2F6aW4vbm90aW5vLz9vcGVuRGVhbD1jb2QtcmVkdWNlcmUtCR7YLTIw=
+LWxhLWFjaGl6aXRpaS1kZS1wZXN0ZS01MC1sZWktNzc3MDA2JnV0bV9zb3VyY2U9bmV3cwUQGG1=
+lZGl1bT0FtAUR8HNjYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbU=
+NiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZ=
+GVhbC03NzcwMDZjbHNwAQ/EEi5rt3nz2wU7hSRVHI8osgLJWmqF7r9TkgF4OzZv3o/click" ta=
+rget=3D"_blank" style=3D"color: #EF7F1A; text-decoration: underline;"> <img=
+ alt=3D"$deal->name" src=3D"https://img.tiplicdn.com/zoh4eiLi/IMG/7200/0may=
+XvkKJtPTxkTS_zu5bR8sg5AXOkY8PUOKjZppVK4/resize:fit:480:0:1/gravity:no/quali=
+ty:100/aHR0cHM6Ly93d3cudGlwbGkuY3ovYXBpL3YxL3Nob3AtaW1hZ2UvNTk3Mw.png" styl=
+e=3D"border:0;display:block;outline:none;text-decoration:none;height:auto;w=
+idth:100%;font-size:13px;" width=3D"85" height=3D"auto"> </a> </td> </tr> <=
+/tbody> </table> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></t=
+d><td class=3D"" style=3D"vertical-align:middle;width:276.36px;" ><![endif]=
+--> <div class=3D"mj-column-per-49 mj-outlook-group-fix" style=3D"font-size=
+:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:midd=
+le;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" width=3D"100%"> <tbody> <tr> <td style=3D"vertical-alig=
+n:middle;padding:8px 16px;"> <table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style width=3D"100%"> <tbody> <tr> <td alig=
+n=3D"left" style=3D"font-size:0px;padding:0px;word-break:break-word;"> <div=
+ style=3D"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;l=
+ine-height:1.3;text-align:left;color:#080b10;"><a href=3D"https://tipli.t.m=
+ailkit.eu/PfNybCUAowOpA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlI=
+OX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxw=
+DGFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2NjY0NDQ4MmNjaWRkOTY=
+xMWVpZF91bCDAoQdhdSb9AWh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F6aW4vbm90aW5vLz9vcG=
+VuRGVhbD1jb2QtcmVkdWNlcmUtCR7YLTIwLWxhLWFjaGl6aXRpaS1kZS1wZXN0ZS01MC1sZWktN=
+zc3MDA2JnV0bV9zb3VyY2U9bmV3cwUQGG1lZGl1bT0FtAUR8HNjYW1wYWlnbj1STy0yMDI1MTEw=
+OS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGx=
+tb3lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03NzcwMDZjbHNwAQ/-WpEt43hWPgOypsnkbH=
+krZNAMGd1VhblBYT4KQeTDWw/click" style=3D"color: #080b10; text-decoration: n=
+one;"> Cod <strong>reducere</strong> Notino <strong>20%</strong> la achizi=
+=C8=9Bii de peste 50 lei =C2=BB </a></div> </td> </tr> <tr> <td align=3D"le=
+ft" class=3D"deal" style=3D"font-size:0px;padding:5px 0 0 0;word-break:brea=
+k-word;"> <div style=3D"font-family:Ubuntu, Helvetica, Arial, sans-serif;fo=
+nt-size:14px;font-weight:600;line-height:1.3;text-align:left;color:#66b940;=
+"><span class=3D"_value">3</span>&nbsp;<span class=3D"_symbol">%</span> <sp=
+an class=3D"_suffix">=C3=AEnapoi</span></div> </td> </tr> </tbody> </table>=
+ </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td><td class=3D""=
+ style=3D"vertical-align:middle;width:186.12px;" ><![endif]--> <div class=
+=3D"mj-column-per-33 mj-outlook-group-fix" style=3D"font-size:0px;text-alig=
+n:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;=
+"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"vertical-align:middle;" width=3D"100%"> <tbody> <tr> <td ali=
+gn=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word;"> <div =
+style=3D"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;li=
+ne-height:1;text-align:left;color:#000000;"><a href=3D"https://tipli.t.mail=
+kit.eu/PfNybCUAowOpA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX1=
+9b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwDWF=
+hZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8GBtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMW=
+VpZF91bCDAoQdhdSb9AWh0dHBzOi8vd3d3LnRpcGxpLnJvL21hZ2F6aW4vbm90aW5vLz9vcGVuR=
+GVhbD1jb2QtcmVkdWNlcmUtCR7YLTIwLWxhLWFjaGl6aXRpaS1kZS1wZXN0ZS01MC1sZWktNzc3=
+MDA2JnV0bV9zb3VyY2U9bmV3cwUQGG1lZGl1bT0FtAUR8HNjYW1wYWlnbj1STy0yMDI1MTEwOS1=
+CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3=
+lsU2xiclpoNkI0dmUwT0g3dWVZcHojZGVhbC03NzcwMDZjbHNwAQ/vGgQwTHnbPqFTRlHD-BHQ8=
+rtNLaMtDyh-l777YYEns4/click" style=3D"display: inline-block; width: 160px; =
+height: 51px; line-height: 51px; text-align: left; background: url('https:/=
+/www.tipli.ro/images/coupon-bg.png') no-repeat center; background-size: 100=
+% 100%; background-repeat: no-repeat; color: white; text-decoration: none; =
+font-weight: bold; background-color: #f69028; border-radius: 12px; font-siz=
+e: 16px; padding-left: 20px;"> Ob=C8=9Bine un cupon </a></div> </td> </tr> =
+</tbody> </table> </div> <!--[if mso | IE]></td></tr></table><![endif]--> <=
+/td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table></t=
+d></tr><tr><td class=3D"" width=3D"600px" ><table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation"=
+ style=3D"width:580px;" width=3D"580" ><tr><td style=3D"line-height:0px;fon=
+t-size:0px;mso-line-height-rule:exactly;"><![endif]--> <div style=3D"margin=
+:0px auto;max-width:580px;"> <table align=3D"center" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"> <tb=
+ody> <tr> <td style=3D"direction:ltr;font-size:0px;padding:10px 0 10px 0;te=
+xt-align:center;"> <!--[if mso | IE]><table role=3D"presentation" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertica=
+l-align:top;width:580px;" ><![endif]--> <div class=3D"mj-column-per-100 mj-=
+outlook-group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;dis=
+play:inline-block;vertical-align:top;width:100%;"> <table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"> <tbod=
+y> <tr> <td style=3D"vertical-align:top;padding:0;"> <table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style width=3D"100%=
+"> <tbody> <tr> <td align=3D"center" style=3D"font-size:0px;padding:0;word-=
+break:break-word;"> <p style=3D"margin-bottom: 0; border-top: solid 1px #f0=
+f0f0; font-size: 1px; margin: 0px auto; width: 100%;"> </p> <!--[if mso | I=
+E]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"border-top:solid 1px #f0f0f0;font-size:1px;margin:0px auto;width:=
+580px;" role=3D"presentation" width=3D"580px" ><tr><td style=3D"height:0;li=
+ne-height:0;"> &nbsp; </td></tr></table><![endif]--> </td> </tr> </tbody> <=
+/table> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></=
+table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]><=
+/td></tr></table></td></tr><tr><td class=3D"" width=3D"600px" ><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" rol=
+e=3D"presentation" style=3D"width:580px;" width=3D"580" bgcolor=3D"#ffffff"=
+ ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exact=
+ly;"><![endif]--> <div style=3D"background:#ffffff;background-color:#ffffff=
+;margin:0px auto;max-width:580px;"> <table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"background=
+:#ffffff;background-color:#ffffff;width:100%;"> <tbody> <tr> <td style=3D"b=
+order:0px solid;direction:ltr;font-size:0px;padding:8px;text-align:center;"=
+> <!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:middle;=
+width:101.52px;" ><![endif]--> <div class=3D"mj-column-per-18 mj-outlook-gr=
+oup-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:inlin=
+e-block;vertical-align:middle;width:100%;"> <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:midd=
+le;" width=3D"100%"> <tbody> <tr> <td align=3D"left" style=3D"font-size:0px=
+;padding:8px;word-break:break-word;"> <table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;=
+border-spacing:0px;"> <tbody> <tr> <td style=3D"width:85px;"> <a href=3D"ht=
+tps://tipli.t.mailkit.eu/PfNybCUAogOjA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaW=
+RkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc=
+2VuZCDr764DYmxwDmFhZWNsaWNrY2xvY2VkYXRhMWRjaGFuZWVtYWlsZgEu8KhtZGsyNTE2NjY0=
+NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdjbHNwAWF1JvcBaHR0cHM6Ly93d3cudGlwbGkucm8vbWF=
+nYXppbi9lcGFudG9maS8_b3BlbkRlYWw9Y29kLXJlZHVjZXJlLWVwYW50b2ZpLWJsYWNrLWZyaW=
+RheS0zMC1leHRyYS03NzY5MTMmdXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09BbMFEfBuY2Ftc=
+GFpZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUExYTFNC=
+Rm81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3VlWXB6I2RlYWwtNzc2OTEz/_4AcaR=
+lESPTBcS102WqX_vK4YIAsG4NEfvBrJlRITqM/click" target=3D"_blank" style=3D"col=
+or: #EF7F1A; text-decoration: underline;"> <img alt=3D"$deal->name" src=3D"=
+https://img.tiplicdn.com/zoh4eiLi/IMG/7200/L_QrZtllxrbdIfIAEJZXXV5jSyvimxl-=
+8DgogdflTHU/resize:fit:480:0:1/gravity:no/quality:100/aHR0cHM6Ly93d3cudGlwb=
+GkuY3ovYXBpL3YxL3Nob3AtaW1hZ2UvNjI5MQ.png" style=3D"border:0;display:block;=
+outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" w=
+idth=3D"85" height=3D"auto"> </a> </td> </tr> </tbody> </table> </td> </tr>=
+ </tbody> </table> </div> <!--[if mso | IE]></td><td class=3D"" style=3D"ve=
+rtical-align:middle;width:276.36px;" ><![endif]--> <div class=3D"mj-column-=
+per-49 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;directi=
+on:ltr;display:inline-block;vertical-align:middle;width:100%;"> <table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D=
+"100%"> <tbody> <tr> <td style=3D"vertical-align:middle;padding:8px 16px;">=
+ <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style width=3D"100%"> <tbody> <tr> <td align=3D"left" style=3D"font-siz=
+e:0px;padding:0px;word-break:break-word;"> <div style=3D"font-family:Ubuntu=
+, Helvetica, Arial, sans-serif;font-size:16px;line-height:1.3;text-align:le=
+ft;color:#080b10;"><a href=3D"https://tipli.t.mailkit.eu/PfNybCUAnwOjA3woKh=
+BmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2Fyb=
+GFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwD2FhZWNsaWNrY2xvY2VkYXRhMWRj=
+aGFuZWVtYWlsZgEu8GZtZGsyNTE2NjY0NDQ4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSb3AWh0dHB=
+zOi8vd3d3LnRpcGxpLnJvL21hZ2F6aW4vZXBhbnRvZmkvP29wZW5EZWFsPWNvZC1yZWR1Y2VyZS=
+1lcGFuASCwLWJsYWNrLWZyaWRheS0zMC1leHRyYS03NzY5MTMmdXRtX3NvdXJjZT1uZXdzBRAYb=
+WVkaXVtPQWuBRHwc2NhbXBhaWduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNt=
+Q2JqMjVvTjNqblBMWExTQkZvNWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweiN=
+kZWFsLTc3NjkxM2Nsc3AB/243lI98xX0LNH_FChxARa5jp7fjCBzWgvrL-FSlrgEE/click" st=
+yle=3D"color: #080b10; text-decoration: none;"> Cod <strong>reducere</stron=
+g> ePantofi Black Friday <strong>-30%</strong> extra =C2=BB </a></div> </td=
+> </tr> <tr> <td align=3D"left" class=3D"deal" style=3D"font-size:0px;paddi=
+ng:5px 0 0 0;word-break:break-word;"> <div style=3D"font-family:Ubuntu, Hel=
+vetica, Arial, sans-serif;font-size:14px;font-weight:600;line-height:1.3;te=
+xt-align:left;color:#66b940;"><span class=3D"_upTo">p=C3=A2n=C4=83 la</span=
+> <span class=3D"_value">3</span>&nbsp;<span class=3D"_symbol">%</span> <sp=
+an class=3D"_suffix">=C3=AEnapoi</span></div> </td> </tr> </tbody> </table>=
+ </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td><td class=3D""=
+ style=3D"vertical-align:middle;width:186.12px;" ><![endif]--> <div class=
+=3D"mj-column-per-33 mj-outlook-group-fix" style=3D"font-size:0px;text-alig=
+n:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;=
+"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"vertical-align:middle;" width=3D"100%"> <tbody> <tr> <td ali=
+gn=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word;"> <div =
+style=3D"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;li=
+ne-height:1;text-align:left;color:#000000;"><a href=3D"https://tipli.t.mail=
+kit.eu/PfNybCUAogOkA3woKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX1=
+9b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwIBB=
+hYWVjbGlja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbAF68GZzbWRrMjUxNjY2NDQ0ODJjY2lkZDk2MT=
+FlaWRfdWwgwKEHYXUm9wFodHRwczovL3d3dy50aXBsaS5yby9tYWdhemluL2VwYW50b2ZpLz9vc=
+GVuRGVhbD1jb2QtcmVkdWNlcmUtZXBhBSCwLWJsYWNrLWZyaWRheS0zMC1leHRyYS03NzY5MTMm=
+dXRtX3NvdXJjZT1uZXdzBRAsbWVkaXVtPWVtYWlsBRHwc2NhbXBhaWduPVJPLTIwMjUxMTA5LUJ=
+Gc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb01wWGJMbnpQbG1veW=
+xTbGJyWmg2QjR2ZTBPSDd1ZVlweiNkZWFsLTc3NjkxM2Nsc3AB/24rfvn2kNfRNGxXFdZ8gKHBw=
+kC3yJIqQ5lIAes29d2w/click" style=3D"display: inline-block; width: 160px; he=
+ight: 51px; line-height: 51px; text-align: left; background: url('https://w=
+ww.tipli.ro/images/coupon-bg.png') no-repeat center; background-size: 100% =
+100%; background-repeat: no-repeat; color: white; text-decoration: none; fo=
+nt-weight: bold; background-color: #f69028; border-radius: 12px; font-size:=
+ 16px; padding-left: 20px;"> Ob=C8=9Bine un cupon </a></div> </td> </tr> </=
+tbody> </table> </div> <!--[if mso | IE]></td></tr></table><![endif]--> </t=
+d> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table></td>=
+</tr><tr><td class=3D"" width=3D"600px" ><table align=3D"center" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" sty=
+le=3D"width:580px;" width=3D"580" ><tr><td style=3D"line-height:0px;font-si=
+ze:0px;mso-line-height-rule:exactly;"><![endif]--> <div style=3D"margin:0px=
+ auto;max-width:580px;"> <table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"> <tbod=
+y> <tr> <td style=3D"direction:ltr;font-size:0px;padding:10px 0 10px 0;text=
+-align:center;"> <!--[if mso | IE]><table role=3D"presentation" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-=
+align:top;width:580px;" ><![endif]--> <div class=3D"mj-column-per-100 mj-ou=
+tlook-group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;displ=
+ay:inline-block;vertical-align:top;width:100%;"> <table border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"> <tbody>=
+ <tr> <td style=3D"vertical-align:top;padding:0;"> <table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" style width=3D"100%">=
+ <tbody> <tr> <td align=3D"center" style=3D"font-size:0px;padding:0;word-br=
+eak:break-word;"> <p style=3D"margin-bottom: 0; border-top: solid 1px #f0f0=
+f0; font-size: 1px; margin: 0px auto; width: 100%;"> </p> <!--[if mso | IE]=
+><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" s=
+tyle=3D"border-top:solid 1px #f0f0f0;font-size:1px;margin:0px auto;width:58=
+0px;" role=3D"presentation" width=3D"580px" ><tr><td style=3D"height:0;line=
+-height:0;"> &nbsp; </td></tr></table><![endif]--> </td> </tr> </tbody> </t=
+able> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></ta=
+ble><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></t=
+d></tr></table></td></tr><tr><td class=3D"" width=3D"600px" ><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" rol=
+e=3D"presentation" style=3D"width:580px;" width=3D"580" bgcolor=3D"#ffffff"=
+ ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exact=
+ly;"><![endif]--> <div style=3D"background:#ffffff;background-color:#ffffff=
+;margin:0px auto;max-width:580px;"> <table align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"background=
+:#ffffff;background-color:#ffffff;width:100%;"> <tbody> <tr> <td style=3D"b=
+order:0px solid;direction:ltr;font-size:0px;padding:8px;text-align:center;"=
+> <!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:middle;=
+width:101.52px;" ><![endif]--> <div class=3D"mj-column-per-18 mj-outlook-gr=
+oup-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:inlin=
+e-block;vertical-align:middle;width:100%;"> <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:midd=
+le;" width=3D"100%"> <tbody> <tr> <td align=3D"left" style=3D"font-size:0px=
+;padding:8px;word-break:break-word;"> <table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;=
+border-spacing:0px;"> <tbody> <tr> <td style=3D"width:85px;"> <a href=3D"ht=
+tps://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0Nz=
+hkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6=
+--uA2JscCARYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgy=
+Y2NpZGQ5NjExZWlkX3VsIMChB2F1JoACaHR0cHM6Ly93d3cudGlwbGkucm8vbWFnYXppbi9saXR=
+lcmEvP29wZW5EZWFsPWJsYWNrLWZyaWRheS0yMDI1LXBlLWxpdGVyYS1yby1tZWdhLXJlZHVjZX=
+JpLWktY2Fkb3VyaS03NzY0NDEmdXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmdXRtX=
+2NhbXBhaWduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBM=
+WExTQkZvNWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweiNkZWFsLTc3NjQ0MWN=
+sc3AB/j2mWxdYK7VDnw-X9ccrN2_iLE3jWkLEwweTH5znnh-E/click" target=3D"_blank" =
+style=3D"color: #EF7F1A; text-decoration: underline;"> <img alt=3D"$deal->n=
+ame" src=3D"https://img.tiplicdn.com/zoh4eiLi/IMG/7200/MpJALCYqbqZIYMgnVoaG=
+6zlSYRTpVPcZQHodwfrWgG0/resize:fit:480:0:1/gravity:no/quality:100/aHR0cHM6L=
+y93d3cudGlwbGkuY3ovYXBpL3YxL3Nob3AtaW1hZ2UvNjI5MA.png" style=3D"border:0;di=
+splay:block;outline:none;text-decoration:none;height:auto;width:100%;font-s=
+ize:13px;" width=3D"85" height=3D"auto"> </a> </td> </tr> </tbody> </table>=
+ </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td><td class=3D""=
+ style=3D"vertical-align:middle;width:276.36px;" ><![endif]--> <div class=
+=3D"mj-column-per-49 mj-outlook-group-fix" style=3D"font-size:0px;text-alig=
+n:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;=
+"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"100%"> <tbody> <tr> <td style=3D"vertical-align:middle;paddi=
+ng:8px 16px;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style width=3D"100%"> <tbody> <tr> <td align=3D"left" sty=
+le=3D"font-size:0px;padding:0px;word-break:break-word;"> <div style=3D"font=
+-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1.3=
+;text-align:left;color:#080b10;"><a href=3D"https://tipli.t.mailkit.eu/PfNy=
+bAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmF=
+ld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCASYWFlY2xpY2tjbG9jZW=
+RhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc=
+3ABYXUmgAJodHRwczovL3d3dy50aXBsaS5yby9tYWdhemluL2xpdGVyYS8_b3BlbkRlYWw9Ymxh=
+Y2stZnJpZGF5LTIwMjUtcGUtbGl0ZXJhLXJvLW1lZ2EtcmVkdWNlcmktaS1jYWRvdXJpLTc3NjQ=
+0MSZ1dG1fc291cmNlPW5ld3MmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249Uk8tMjAyNT=
+ExMDktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUExYTFNCRm81YURvTXBYYkxue=
+lBsbW95bFNsYnJaaDZCNHZlME9IN3VlWXB6I2RlYWwtNzc2NDQx/mLyGnpQW1ag-vNUMijleXS9=
+3wkdCxL5ROuWvnIs5G1Q/click" style=3D"color: #080b10; text-decoration: none;=
+"> Black Friday 2025 pe litera.ro - Mega reduceri de p=C3=A2n=C4=83 la <str=
+ong>90%</strong> =C2=BB </a></div> </td> </tr> <tr> <td align=3D"left" clas=
+s=3D"deal" style=3D"font-size:0px;padding:5px 0 0 0;word-break:break-word;"=
+> <div style=3D"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:=
+14px;font-weight:600;line-height:1.3;text-align:left;color:#66b940;"><span =
+class=3D"_value">5</span>&nbsp;<span class=3D"_symbol">%</span> <span class=
+=3D"_suffix">=C3=AEnapoi</span></div> </td> </tr> </tbody> </table> </td> <=
+/tr> </tbody> </table> </div> <!--[if mso | IE]></td><td class=3D"" style=
+=3D"vertical-align:middle;width:186.12px;" ><![endif]--> <div class=3D"mj-c=
+olumn-per-33 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;d=
+irection:ltr;display:inline-block;vertical-align:middle;width:100%;"> <tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"vertical-align:middle;" width=3D"100%"> <tbody> <tr> <td align=3D"le=
+ft" style=3D"font-size:0px;padding:0;word-break:break-word;"> <div style=3D=
+"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-heigh=
+t:1;text-align:left;color:#000000;"><a href=3D"https://tipli.t.mailkit.eu/P=
+fNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHI=
+BmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCATYWFlY2xpY2tjbG9=
+jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2=
+F1JoACaHR0cHM6Ly93d3cudGlwbGkucm8vbWFnYXppbi9saXRlcmEvP29wZW5EZWFsPWJsYWNrL=
+WZyaWRheS0yMDI1LXBlLWxpdGVyYS1yby1tZWdhLXJlZHVjZXJpLWktY2Fkb3VyaS03NzY0NDEm=
+dXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPVJPLTIwMjUxMTA=
+5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb01wWGJMbnpQbG=
+1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweiNkZWFsLTc3NjQ0MWNsc3AB/hh7uThQkc5HDenXcqXhn=
+zYz0ROKo8PlzDuXH1FP4ANE/click" class=3D"gradient-button" style=3D"display: =
+inline-block; width: 180px; height: 51px; line-height: 51px; color: white; =
+text-decoration: none; font-weight: bold; background-image: linear-gradient=
+(#f69028, #f69028); border-radius: 12px; font-size: 16px; text-align: cente=
+r;"> Ob=C8=9Bine o reducere </a></div> </td> </tr> </tbody> </table> </div>=
+ <!--[if mso | IE]></td></tr></table><![endif]--> </td> </tr> </tbody> </ta=
+ble> </div> <!--[if mso | IE]></td></tr></table></td></tr><![endif]--> <!--=
+ End of Deals block--> <!--[if mso | IE]><tr><td class=3D"" width=3D"600px"=
+ ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+class=3D"" role=3D"presentation" style=3D"width:580px;" width=3D"580" ><tr>=
+<td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><=
+![endif]--> <div style=3D"margin:0px auto;max-width:580px;"> <table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:100%;"> <tbody> <tr> <td style=3D"direction:ltr;font=
+-size:0px;padding:30px 0 0 0;text-align:center;"> <!--[if mso | IE]><table =
+role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr>=
+</tr></table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso =
+| IE]></td></tr></table></td></tr><![endif]--> <!-- <mj-divider border-widt=
+h=3D"1px" border-style=3D"dashed"></mj-divider>--><!-- Content block title =
+--> <!--[if mso | IE]><tr><td class=3D"" width=3D"600px" ><table align=3D"c=
+enter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"=
+presentation" style=3D"width:580px;" width=3D"580" ><tr><td style=3D"line-h=
+eight:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--> <div st=
+yle=3D"margin:0px auto;max-width:580px;"> <table align=3D"center" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"widt=
+h:100%;"> <tbody> <tr> <td style=3D"direction:ltr;font-size:0px;padding:5px=
+ 0 15px 0;text-align:center;"> <!--[if mso | IE]><table role=3D"presentatio=
+n" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" styl=
+e=3D"vertical-align:top;width:580px;" ><![endif]--> <div class=3D"mj-column=
+-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;direc=
+tion:ltr;display:inline-block;vertical-align:top;width:100%;"> <table borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"=
+vertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=3D"center" styl=
+e=3D"font-size:0px;padding:0;word-break:break-word;"> <div style=3D"font-fa=
+mily:Roboto, sans-serif;font-size:26px;font-weight:600;line-height:1.5;text=
+-align:center;color:#080b10;">Black Friday =F0=9F=92=A3</div> </td> </tr> <=
+/tbody> </table> </div> <!--[if mso | IE]></td></tr></table><![endif]--> </=
+td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table></td=
+></tr><![endif]--> <!-- End of Content block title --><!-- Banners block-->=
+ <!--[if mso | IE]><tr><td class=3D"" width=3D"600px" ><table align=3D"cent=
+er" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"pre=
+sentation" style=3D"width:580px;" width=3D"580" ><tr><td style=3D"line-heig=
+ht:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--> <div style=
+=3D"margin:0px auto;max-width:580px;"> <table align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:1=
+00%;"> <tbody> <tr> <td style=3D"direction:ltr;font-size:0px;padding:0;text=
+-align:center;"> <!--[if mso | IE]><table role=3D"presentation" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-=
+align:top;width:290px;" ><![endif]--> <div class=3D"mj-column-per-50 mj-out=
+look-group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;displa=
+y:inline-block;vertical-align:top;width:100%;"> <table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:=
+top;" width=3D"100%"> <tbody> <tr> <td align=3D"center" class=3D"banner-img=
+" style=3D"font-size:0px;padding:0;word-break:break-word;"> <table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+order-collapse:collapse;border-spacing:0px;"> <tbody> <tr> <td style=3D"wid=
+th:270px;"> <a href=3D"https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZm=
+AxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVA=
+Z21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAUYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWx=
+maWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmzAFodHRwczovL3=
+d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEyODI4P3NvdXJjZT1uZXdzbGV0d=
+GVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1=
+MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG5=
+6UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/yA2u2bjvucN4Y-a0VxfEPsm4QTlzv073EngxkG=
+Gx_tE/click" target=3D"_blank" style=3D"color: #EF7F1A; text-decoration: un=
+derline;"> <img alt src=3D"https://img.tiplicdn.com/zoh4eiLi/IMG/7200/mm99g=
+cmI9rhgPQqP5UmAGUFst0Xjc84qE9oGQ8ueHTE/resize:fit:648:0:1/gravity:no/qualit=
+y:100/aHR0cHM6Ly93d3cudGlwbGkuY3ovdXBsb2FkL2ltYWdlcy9tYXJrZXRpbmctYmFubmVyL=
+WltYWdlLzgwNjUyOC5wbmc.png" style=3D"border:0;border-radius:1rem;display:bl=
+ock;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px=
+;" width=3D"270" height=3D"auto"> </a> </td> </tr> </tbody> </table> </td> =
+</tr> <tr> <td align=3D"center" style=3D"font-size:0px;padding:10px 25px;wo=
+rd-break:break-word;"> <div style=3D"font-family:Roboto, sans-serif;font-si=
+ze:18px;font-weight:500;line-height:1;text-align:center;text-decoration:und=
+erline;color:#080b10;"><a href=3D"https://tipli.t.mailkit.eu/PfNybAUAKCoQZm=
+lkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2Nhcmxhc=
+Gxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAVYWFlY2xpY2tjbG9jZWRhdGExZGNo=
+YW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmzAF=
+odHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEyODI4P3NvdXJjZT=
+1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnb=
+j1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVh=
+RG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/r3O2L0b0tArES1wm-yd8eVFyvE3=
+7e9xUStHHx431vhk/click" style=3D"text-decoration: underline; color: #080b10=
+;">TEMU - Reduceri de Black Friday de p=C3=A2n=C4=83 la 80 %</a></div> </td=
+> </tr> </tbody> </table> </div> <!--[if mso | IE]></td><td class=3D"" styl=
+e=3D"vertical-align:top;width:290px;" ><![endif]--> <div class=3D"mj-column=
+-per-50 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;direct=
+ion:ltr;display:inline-block;vertical-align:top;width:100%;"> <table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"v=
+ertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=3D"center" class=
+=3D"banner-img" style=3D"font-size:0px;padding:0;word-break:break-word;"> <=
+table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" style=3D"border-collapse:collapse;border-spacing:0px;"> <tbody> <tr> <td =
+style=3D"width:270px;"> <a href=3D"https://tipli.t.mailkit.eu/PfNybAUAKCoQZ=
+mlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2Nhcmxh=
+cGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAWYWFlY2xpY2tjbG9jZWRhdGExZGN=
+oYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmzA=
+FodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEyODUzP3NvdXJjZ=
+T1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWln=
+bj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzV=
+hRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/7kq9OphX6l2HZEzjhgEvNGPXHg=
+6H9HobBdfpKyjMGDs/click" target=3D"_blank" style=3D"color: #EF7F1A; text-de=
+coration: underline;"> <img alt src=3D"https://img.tiplicdn.com/zoh4eiLi/IM=
+G/7200/SyKPMUUunqeXVJxkiBkdyFNPyArnEENHnfy0z9hHrpM/resize:fit:648:0:1/gravi=
+ty:no/quality:100/aHR0cHM6Ly93d3cudGlwbGkuY3ovdXBsb2FkL2ltYWdlcy9tYXJrZXRpb=
+mctYmFubmVyLWltYWdlLzgwNjcxNC5wbmc.png" style=3D"border:0;border-radius:1re=
+m;display:block;outline:none;text-decoration:none;height:auto;width:100%;fo=
+nt-size:13px;" width=3D"270" height=3D"auto"> </a> </td> </tr> </tbody> </t=
+able> </td> </tr> <tr> <td align=3D"center" style=3D"font-size:0px;padding:=
+10px 25px;word-break:break-word;"> <div style=3D"font-family:Roboto, sans-s=
+erif;font-size:18px;font-weight:500;line-height:1;text-align:center;text-de=
+coration:underline;color:#080b10;"><a href=3D"https://tipli.t.mailkit.eu/Pf=
+NybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIB=
+mFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAXYWFlY2xpY2tjbG9j=
+ZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2N=
+sc3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEyOD=
+UzP3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0b=
+V9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI1b04zam5Q=
+TFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/crTIegPdC55wnjP=
+huIai5c9CjKB7tib814IXfpkGzxg/click" style=3D"text-decoration: underline; co=
+lor: #080b10;">CCC - Black Friday</a></div> </td> </tr> </tbody> </table> <=
+/div> <!--[if mso | IE]></td></tr></table><![endif]--> </td> </tr> </tbody>=
+ </table> </div> <!--[if mso | IE]></td></tr></table></td></tr><tr><td clas=
+s=3D"" width=3D"600px" ><table align=3D"center" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:580px=
+;" width=3D"580" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-h=
+eight-rule:exactly;"><![endif]--> <div style=3D"margin:0px auto;max-width:5=
+80px;"> <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;"> <tbody> <tr> <td style=
+=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"> <!--[if mso =
+| IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:290px;" ><![e=
+ndif]--> <div class=3D"mj-column-per-50 mj-outlook-group-fix" style=3D"font=
+-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align=
+:top;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"> <tbody>=
+ <tr> <td align=3D"center" class=3D"banner-img" style=3D"font-size:0px;padd=
+ing:0;word-break:break-word;"> <table border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;border-=
+spacing:0px;"> <tbody> <tr> <td style=3D"width:270px;"> <a href=3D"https://=
+tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRf=
+ZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2J=
+scCAYYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZG=
+Q5NjExZWlkX3VsIMChB2Nsc3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvb=
+mVhemEvYmFubmVyLzEyODMzP3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1f=
+bWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmF=
+NMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dW=
+VZcHo/fa6ZlCetTeqGK9DPfZqDPm4XKeOYLm2KH3K4bBzEshU/click" target=3D"_blank" =
+style=3D"color: #EF7F1A; text-decoration: underline;"> <img alt src=3D"http=
+s://img.tiplicdn.com/zoh4eiLi/IMG/7200/XgCVTTDB6MvSiFkYEX51NDw4NNiDAyueSFkt=
+_7xGokM/resize:fit:648:0:1/gravity:no/quality:100/aHR0cHM6Ly93d3cudGlwbGkuY=
+3ovdXBsb2FkL2ltYWdlcy9tYXJrZXRpbmctYmFubmVyLWltYWdlLzgwNjUzOC5wbmc.png" sty=
+le=3D"border:0;border-radius:1rem;display:block;outline:none;text-decoratio=
+n:none;height:auto;width:100%;font-size:13px;" width=3D"270" height=3D"auto=
+"> </a> </td> </tr> </tbody> </table> </td> </tr> <tr> <td align=3D"center"=
+ style=3D"font-size:0px;padding:10px 25px;word-break:break-word;"> <div sty=
+le=3D"font-family:Roboto, sans-serif;font-size:18px;font-weight:500;line-he=
+ight:1;text-align:center;text-decoration:underline;color:#080b10;"><a href=
+=3D"https://tipli.t.mailkit.eu/PfNybCUA9AL5AnwoKhBmaWRfbXNnIJmYDGRpZF90IMz5=
+AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21=
+naWRfc2VuZCDr764DYmxwIBlhYWVjbGlja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbAF68HJzbWRrMj=
+UxNjY2NDQ0ODJjY2lkZDk2MTFlaWRfdWwgwKEHYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZ=
+WRpcmVjdGlvbmVhemEvYmFubmVyLzEyODMzP3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyDRYF=
+ECxtZWRpdW09ZW1haWwFEfBnY2FtcGFpZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZ=
+hTTF1Y21DYmoyNW9OM2puUExYTFNCRm81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3=
+VlWXB6Y2xzcAE/LgOlmLbJNJyXEdVC3c0t2T2hoGpzkB8SFuKL93eKt-4/click" style=3D"t=
+ext-decoration: underline; color: #080b10;">Fashion Days - Black Friday</a>=
+</div> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td><td clas=
+s=3D"" style=3D"vertical-align:top;width:290px;" ><![endif]--> <div class=
+=3D"mj-column-per-50 mj-outlook-group-fix" style=3D"font-size:0px;text-alig=
+n:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> =
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"vertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=3D"=
+center" class=3D"banner-img" style=3D"font-size:0px;padding:0;word-break:br=
+eak-word;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"border-collapse:collapse;border-spacing:0px;"> <tbo=
+dy> <tr> <td style=3D"width:270px;"> <a href=3D"https://tipli.t.mailkit.eu/=
+PfNybCUA9AL5AnwoKhBmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnR=
+zIPWawcgGYWV3Y2FybGFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwIBphYWVjbG=
+lja2Nsb2NlZGF0YTFkY2hhbmVlbWFpbAF68HJzbWRrMjUxNjY2NDQ0ODJjY2lkZDk2MTFlaWRfd=
+WwgwKEHYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFubmVyLzEy=
+ODY1P3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyDRYFECxtZWRpdW09ZW1haWwFEfBnY2FtcGF=
+pZ249Uk8tMjAyNTExMDktQkZzcGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUExYTFNCRm=
+81YURvTXBYYkxuelBsbW95bFNsYnJaaDZCNHZlME9IN3VlWXB6Y2xzcAE/kkbkRPE_ubv12PXD-=
+CiIT5UuFgQUfXkivFJlkdU_OZU/click" target=3D"_blank" style=3D"color: #EF7F1A=
+; text-decoration: underline;"> <img alt src=3D"https://img.tiplicdn.com/zo=
+h4eiLi/IMG/7200/bSnd4s5s_qzUMbSraOIph53IHmF46ODBb6PKsRpo9wU/resize:fit:648:=
+0:1/gravity:no/quality:100/aHR0cHM6Ly93d3cudGlwbGkuY3ovdXBsb2FkL2ltYWdlcy9t=
+YXJrZXRpbmctYmFubmVyLWltYWdlLzgwNjc2Mi5wbmc.png" style=3D"border:0;border-r=
+adius:1rem;display:block;outline:none;text-decoration:none;height:auto;widt=
+h:100%;font-size:13px;" width=3D"270" height=3D"auto"> </a> </td> </tr> </t=
+body> </table> </td> </tr> <tr> <td align=3D"center" style=3D"font-size:0px=
+;padding:10px 25px;word-break:break-word;"> <div style=3D"font-family:Robot=
+o, sans-serif;font-size:18px;font-weight:500;line-height:1;text-align:cente=
+r;text-decoration:underline;color:#080b10;"><a href=3D"https://tipli.t.mail=
+kit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0=
+cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAbYWFlY2x=
+pY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3=
+VsIMChB2Nsc3ABYXUmzAFodHRwczovL3d3dy50aXBsaS5yby9yZWRpcmVjdGlvbmVhemEvYmFub=
+mVyLzEyODY1P3NvdXJjZT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bmV3cyZ1dG1fbWVkaXVtPWVt=
+YWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNMXVjbUNiajI=
+1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZcHo/EvNN2s=
+KxJPZ5XmHjNr3IBn3QQNc5Fm87GS0wgOzg2S0/click" style=3D"text-decoration: unde=
+rline; color: #080b10;">Dr.Max - Reduceri de p=C3=A2n=C4=83 la 75%</a></div=
+> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table>=
+<![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></=
+tr></table></td></tr><![endif]--> <!-- End of Text block--> <!--[if mso | I=
+E]><tr><td class=3D"" width=3D"600px" ><table align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=
+=3D"width:580px;" width=3D"580" ><tr><td style=3D"line-height:0px;font-size=
+:0px;mso-line-height-rule:exactly;"><![endif]--> <div style=3D"margin:0px a=
+uto;max-width:580px;"> <table align=3D"center" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"> <tbody> <=
+tr> <td style=3D"direction:ltr;font-size:0px;padding:30px 0 0 0;text-align:=
+center;"> <!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0"><tr></tr></table><![endif]--> </td> </tr> </=
+tbody> </table> </div> <!--[if mso | IE]></td></tr></table></td></tr><![end=
+if]--> <!-- <mj-divider border-width=3D"1px" border-style=3D"dashed"></mj-d=
+ivider>--><!-- Content block title --><!-- End of Content block title --><!=
+-- Text block--> <!--[if mso | IE]><tr><td class=3D"" width=3D"600px" ><tab=
+le align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"" role=3D"presentation" style=3D"width:580px;" width=3D"580" bgcolor=3D=
+"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-r=
+ule:exactly;"><![endif]--> <div style=3D"background:#ffffff;background-colo=
+r:#ffffff;margin:0px auto;max-width:580px;"> <table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+ackground:#ffffff;background-color:#ffffff;width:100%;"> <tbody> <tr> <td s=
+tyle=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"> <!--[if =
+mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:580px;" >=
+<![endif]--> <div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D=
+"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-=
+align:top;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"> =
+<tbody> <tr> <td align=3D"left" class=3D"text" style=3D"font-size:0px;paddi=
+ng:0;word-break:break-word;"> <div style=3D"font-family:Roboto, sans-serif;=
+font-size:18px;font-weight:400;line-height:1.5;text-align:left;color:#080b1=
+0;"></div> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr=
+></table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE=
+]></td></tr></table></td></tr><tr><td class=3D"" width=3D"600px" ><table al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" =
+role=3D"presentation" style=3D"width:580px;" width=3D"580" bgcolor=3D"#ffff=
+ff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:ex=
+actly;"><![endif]--> <div style=3D"background:#ffffff;background-color:#fff=
+fff;margin:0px auto;max-width:580px;"> <table align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"backgro=
+und:#ffffff;background-color:#ffffff;width:100%;"> <tbody> <tr> <td style=
+=3D"direction:ltr;font-size:0px;padding:20px 0 0 0;text-align:center;"> <!-=
+-[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:580p=
+x;" ><![endif]--> <div class=3D"mj-column-per-100 mj-outlook-group-fix" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;vert=
+ical-align:top;width:100%;"> <table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%=
+"> <tbody> <tr> <td align=3D"center" class=3D"gradient-button" style=3D"fon=
+t-size:0px;padding:0;word-break:break-word;"> <table border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:s=
+eparate;line-height:100%;"> <tbody> <tr> <td align=3D"center" bgcolor=3D"#E=
+F7F1A" role=3D"presentation" style=3D"border:none;border-radius:12px;cursor=
+:auto;mso-padding-alt:15px 45px;background:#EF7F1A;" valign=3D"middle"> <a =
+href=3D"https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFj=
+YWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2l=
+kX3NlbmQg6--uA2JscCAcYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MT=
+Y2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmngFodHRwczovL3d3dy50aXBsaS5yb=
+y8_dXRtX3NvdXJjZT1uZXdzJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPVJPLTIwMjUx=
+MTA5LUJGc3BlY2lhbDImYXQ9a242YU0xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb01wWGJMbnp=
+QbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZVlweg/EP3MghryvU5wN_rrTYhEdS8etdrkkPkgn9nuSEF=
+kdUU/click" style=3D"display: inline-block; background: #EF7F1A; color: #FF=
+FFFF; font-family: Ubuntu, Helvetica, Arial, sans-serif; font-size: 18px; f=
+ont-weight: 700; line-height: 120%; margin: 0; text-decoration: none; text-=
+transform: none; padding: 15px 45px; mso-padding-alt: 0px; border-radius: 1=
+2px; background-image: linear-gradient(51deg, #EF7F1A, #FFA439); background=
+-color: #ff7e5f;" target=3D"_blank"> Toate cupoanele pe Tipli =E2=80=BA=E2=
+=80=BA </a> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table> </d=
+iv> <!--[if mso | IE]></td></tr></table><![endif]--> </td> </tr> </tbody> <=
+/table> </div> <!--[if mso | IE]></td></tr></table></td></tr><![endif]--> <=
+!-- End of Text block--><!-- End of Content block --> <!--[if mso | IE]></t=
+able><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></=
+td></tr></table><![endif]--> </td> </tr> </tbody> </table> <!-- End of Cont=
+ent blocks --><!-- Footer --> <!--[if mso | IE]><table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentati=
+on" style=3D"width:600px;" width=3D"600" ><tr><td style=3D"line-height:0px;=
+font-size:0px;mso-line-height-rule:exactly;"><![endif]--> <div style=3D"mar=
+gin:0px auto;max-width:600px;"> <table align=3D"center" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"> =
+<tbody> <tr> <td style=3D"direction:ltr;font-size:0px;padding:25px 0 25px 0=
+;text-align:center;"> <!--[if mso | IE]><table role=3D"presentation" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" width=3D"600p=
+x" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"" role=3D"presentation" style=3D"width:600px;" width=3D"600" ><t=
+r><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"=
+><![endif]--> <div style=3D"margin:0px auto;max-width:600px;"> <table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:100%;"> <tbody> <tr> <td style=3D"direction:ltr;font=
+-size:0px;padding:0;text-align:center;"> <!--[if mso | IE]><table role=3D"p=
+resentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=
+=3D"" style=3D"vertical-align:top;width:600px;" ><![endif]--> <div class=3D=
+"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:=
+left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> <t=
+able border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"vertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=3D"ce=
+nter" style=3D"font-size:0px;padding:10px 25px;word-break:break-word;"> <di=
+v style=3D"font-family:Roboto, sans-serif;font-size:13px;line-height:1;text=
+-align:center;color:#080b10;"><h2 style=3D"margin:0">=C3=8Encepe=C8=9Bi s=
+=C4=83 economisi=C8=9Bi =C8=99i la cump=C4=83r=C4=83turile de pe mobil!</h2=
+></div> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></=
+table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]><=
+/td></tr></table></td></tr><tr><td class=3D"" width=3D"600px" ><![endif]-->=
+ <div class=3D"mj-column-per-50 mj-outlook-group-fix" style=3D"font-size:0;=
+line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr=
+;"> <!--[if mso | IE]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" role=3D"presentation" ><tr><td style=3D"vertical-align:top;width:148px;"=
+ ><![endif]--> <div class=3D"mj-column-per-49-5 mj-outlook-group-fix" style=
+=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertic=
+al-align:top;width:49.5%;"> <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"=
+> <tbody> <tr> <td align=3D"right" style=3D"font-size:0px;padding:0;word-br=
+eak:break-word;"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation" style=3D"border-collapse:collapse;border-spacing:0px;"=
+> <tbody> <tr> <td style=3D"width:148px;"> <a href=3D"https://tipli.t.mailk=
+it.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0c=
+yD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAdYWFlY2xp=
+Y2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3V=
+sIMChB2F1JjVodHRwczovL2FwcHMuYXBwbGUuY29tL2N6L2FwcC90aXBsaS9pZDE0OTIyODg3OT=
+Y_bXQ9OGNsc3AB/-B_p_3zGBc1ZE5x44PTItzHzVdLpOpLT2TIczFn2wIo/click" target=3D=
+"_blank" style=3D"color: #EF7F1A; text-decoration: underline;"> <img alt=3D=
+"iOS app" src=3D"https://www.tipli.cz/images/phoneApp/appstore-ro.png" styl=
+e=3D"border:0;display:block;outline:none;text-decoration:none;height:auto;w=
+idth:100%;font-size:13px;" width=3D"148" height=3D"auto"> </a> </td> </tr> =
+</tbody> </table> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></=
+td><td style=3D"vertical-align:top;width:148px;" ><![endif]--> <div class=
+=3D"mj-column-per-49-5 mj-outlook-group-fix" style=3D"font-size:0px;text-al=
+ign:left;direction:ltr;display:inline-block;vertical-align:top;width:49.5%;=
+"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"vertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=
+=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word;"> <table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" styl=
+e=3D"border-collapse:collapse;border-spacing:0px;"> <tbody> <tr> <td style=
+=3D"width:148px;"> <a href=3D"https://tipli.t.mailkit.eu/PfNybCUArwO6A3woKh=
+BmaWRfbXNnIJmYDGRpZF90IMz5AWNhaWRkMTQ3OAES8FhlIOX19b4EYnRzIPWawcgGYWV3Y2Fyb=
+GFwbG9zY2FydUBnbWFpbC5jb21naWRfc2VuZCDr764DYmxwIB5hYWVjbGlja2Nsb2NlZGF0YTFk=
+Y2hhbmVlbWFpbAF68HVzbWRrMjUxNjY2NDQ0ODJjY2lkZDk2MTFlaWRfdWwgwKEHYXUmjQJodHR=
+wczovL3BsYXkuZ29vZ2xlLmNvbS9zdG9yZS9hcHBzL2RldGFpbHM_aWQ9Y3oudGlwbGkuYW5kcm=
+9pZC5hcHAmYW1wJTNCaGw9Y3MmCQwscGNhbXBhaWduaWQ9HQzwgU1LVC1PdGhlci1nbG9iYWwtY=
+WxsLWNvLXBydG5yLXB5LVBhcnRCYWRnZS1NYXIyNTE1LTEmYXQ9WUlFNXVoTUhValZqc1pJaTRF=
+V0pTbmdscWNvSzg1QkEmdXRtX3NvdXJjZT1ub3RpZmljYXRpb24mdXRtX21lZGl1bT1lbWFpbCY=
+BKQRjYQmcXD1yZWdpc3RyYXRpb24tZW1haWxjbHNwAQ/ZrOi4dj31VZ4j5t4FQsJT2cUJVIfF7V=
+93UZOqaNWLJM/click" target=3D"_blank" style=3D"color: #EF7F1A; text-decorat=
+ion: underline;"> <img alt=3D"Android app" src=3D"https://www.tipli.cz/imag=
+es/phoneApp/google-ro.png" style=3D"border:0;display:block;outline:none;tex=
+t-decoration:none;height:auto;width:100%;font-size:13px;" width=3D"148" hei=
+ght=3D"auto"> </a> </td> </tr> </tbody> </table> </td> </tr> </tbody> </tab=
+le> </div> <!--[if mso | IE]></td></tr></table><![endif]--> </div> <!--[if =
+mso | IE]></td></tr></table><![endif]--> </td> </tr> </tbody> </table> </di=
+v> <!--[if mso | IE]></td></tr></table><![endif]--> <table align=3D"center"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"background:#172554;background-color:#172554;width:100%;"> <tbody> <tr=
+> <td> <!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:60=
+0px;" width=3D"600" bgcolor=3D"#172554" ><tr><td style=3D"line-height:0px;f=
+ont-size:0px;mso-line-height-rule:exactly;"><![endif]--> <div style=3D"marg=
+in:0px auto;max-width:600px;border-radius:1rem;overflow:hidden;"> <table al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"width:100%;border-collapse:separate;"> <tbody> <tr> <td=
+ style=3D"border-radius:1rem;direction:ltr;font-size:0px;padding:20px 0;tex=
+t-align:center;"> <!--[if mso | IE]><table role=3D"presentation" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" width=3D"600px" >=
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"" role=3D"presentation" style=3D"width:600px;" width=3D"600" ><tr><t=
+d style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![=
+endif]--> <div style=3D"margin:0px auto;max-width:600px;"> <table align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"width:100%;"> <tbody> <tr> <td style=3D"direction:ltr;font-siz=
+e:0px;padding:10px 0;text-align:center;"> <!--[if mso | IE]><table role=3D"=
+presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td clas=
+s=3D"" style=3D"vertical-align:top;width:600px;" ><![endif]--> <div class=
+=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-ali=
+gn:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">=
+ <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"vertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=3D=
+"center" style=3D"font-size:0px;padding:10px 25px;word-break:break-word;"> =
+<div style=3D"font-family:Roboto, sans-serif;font-size:12px;font-weight:400=
+;line-height:1.5;text-align:center;color:#ffffff;"><a target=3D"_blank" sty=
+le=3D"text-decoration: underline; color: #f97316;" href=3D"https://tipli.t.=
+mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-=
+BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAfYWF=
+lY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZW=
+lkX3VsIMChB2F1Jq4BaHR0cHM6Ly93d3cudGlwbGkucm8vY3VtLWZ1bmN0aW9uZWF6YT91dG1fc=
+291cmNlPW5ld3MmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249Uk8tMjAyNTExMDktQkZz=
+cGVjaWFsMiZhdD1rbjZhTTF1Y21DYmoyNW9OM2puUExYTFNCRm81YURvTXBYYkxuelBsbW95bFN=
+sYnJaaDZCNHZlME9IN3VlWXB6Y2xzcAE/BBYHedfxLw1MHgKQqPisefHI9jl0Csd4_wxKeZqjC9=
+o/click">Cum func=C8=9Bioneaz=C4=83</a> |&nbsp; <a target=3D"_blank" style=
+=3D"text-decoration: underline; color: #f97316;" href=3D"https://tipli.t.ma=
+ilkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BG=
+J0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAgYWFlY=
+2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlk=
+X3VsIMChB2Nsc3ABYXUmpQFodHRwczovL3d3dy50aXBsaS5yby9jb250YWN0P3V0bV9zb3VyY2U=
+9bmV3cyZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYW=
+wyJmF0PWtuNmFNMXVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoN=
+kI0dmUwT0g3dWVZcHo/nERDAFeJjaOHKqbpmOthPMtUq5nYeZCOfIwvySiyJ0I/click">Ave=
+=C8=9Bi nevoie de ajutor?</a> |&nbsp; <a target=3D"_blank" style=3D"text-de=
+coration: underline; color: #f97316;" href=3D"https://tipli.t.mailkit.eu/Pf=
+NybAUAKCoQZmlkX21zZyCZmAxkaWRfdCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIB=
+mFld2NhcmxhcGxvc2NhcnVAZ21haWwuY29tZ2lkX3NlbmQg6--uA2JscCAhYWFlY2xpY2tjbG9j=
+ZWRhdGExZGNoYW5lZW1haWxmaWRfc21kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2F=
+1JqcBaHR0cHM6Ly93d3cudGlwbGkucm8vcmVjb21lbnNlP3V0bV9zb3VyY2U9bmV3cyZ1dG1fbW=
+VkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1STy0yMDI1MTEwOS1CRnNwZWNpYWwyJmF0PWtuNmFNM=
+XVjbUNiajI1b04zam5QTFhMU0JGbzVhRG9NcFhiTG56UGxtb3lsU2xiclpoNkI0dmUwT0g3dWVZ=
+cHpjbHNwAQ/EwMD3bZTa15gd_G60qEQtV0BzbXieKlSLZXbVFQYYmg/click">Contul meu</a=
+></div> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></=
+table><![endif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]><=
+/td></tr></table></td></tr><tr><td class=3D"" width=3D"600px" ><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" rol=
+e=3D"presentation" style=3D"width:600px;" width=3D"600" ><tr><td style=3D"l=
+ine-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--> <d=
+iv style=3D"margin:0px auto;max-width:600px;"> <table align=3D"center" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"width:100%;"> <tbody> <tr> <td style=3D"direction:ltr;font-size:0px;paddin=
+g:0;padding-bottom:20px;text-align:center;"> <!--[if mso | IE]><table role=
+=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td =
+class=3D"" style=3D"vertical-align:top;width:600px;" ><![endif]--> <div cla=
+ss=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-a=
+lign:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;=
+"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"vertical-align:top;" width=3D"100%"> <tbody> <tr> <td align=
+=3D"center" style=3D"font-size:0px;padding:10px 25px;padding-top:0px;paddin=
+g-bottom:0px;word-break:break-word;"> <div style=3D"font-family:Roboto, san=
+s-serif;font-size:12px;font-weight:400;line-height:1.5;text-align:center;co=
+lor:#ffffff;">Copyright =C2=A9 2025 Tipli s.r.o. Toate drepturile rezervate=
+. Acest e-mail a fost trimis pe baza =C3=AEnregistr=C4=83rii dvs. pe portal=
+ul de cashback www.tipli.ro. Pentru a v=C4=83 dezabona de la e-mailuri simi=
+lare <a href=3D"https://tipli.t.mailkit.eu/PfNybAUAKCoQZmlkX21zZyCZmAxkaWRf=
+dCDM-QFjYWlkZDE0NzhkaWRfZSDl9fW-BGJ0cyD1msHIBmFld2NhcmxhcGxvc2NhcnVAZ21haWw=
+uY29tZ2lkX3NlbmQg6--uA2JscCAiYWFlY2xpY2tjbG9jZWRhdGExZGNoYW5lZW1haWxmaWRfc2=
+1kazI1MTY2NjQ0NDgyY2NpZGQ5NjExZWlkX3VsIMChB2Nsc3ABYXUmuQFodHRwczovL3d3dy50a=
+XBsaS5yby9kZXphYm9uYXJlLWVtYWlsL25ld3NsZXR0ZXI_dXRtX3NvdXJjZT1uZXdzJnV0bV9t=
+ZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPVJPLTIwMjUxMTA5LUJGc3BlY2lhbDImYXQ9a242YU0=
+xdWNtQ2JqMjVvTjNqblBMWExTQkZvNWFEb01wWGJMbnpQbG1veWxTbGJyWmg2QjR2ZTBPSDd1ZV=
+lweg/9p3HrWrGcJdyV02K-BbqgtJ2pQilzIX0kNFd1WE29dQ/click" style=3D"color: #EF=
+7F1A; text-decoration: underline;">click aici</a><br><br>Informa=C8=9Bii de=
+spre noi: Tipli s.r.o. =C2=B7 I=C4=8C: 05399092 =C2=B7 Na po=C5=99=C3=AD=C4=
+=8D=C3=AD 1067/25 =C2=B7 Praha 1 11000 =C2=B7 Czech Republic</div> </td> </=
+tr> <tr> <td align=3D"center" style=3D"font-size:0px;padding:10px 25px;padd=
+ing-top:0px;padding-bottom:0px;word-break:break-word;"> <div style=3D"font-=
+family:Roboto, sans-serif;font-size:12px;font-weight:400;line-height:1.5;te=
+xt-align:center;color:#ffffff;">De asemenea, v=C4=83 pute=C8=9Bi dezabona <=
+a href=3D"https://tipli.u.mailkit.eu/mc/VLCCVLWL/GJIASRPQSCJGLUEONK/VLCPPPE=
+EEMV" style=3D"text-decoration: underline; color: #fff;">aici</a></div> </t=
+d> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></table><![en=
+dif]--> </td> </tr> </tbody> </table> </div> <!--[if mso | IE]></td></tr></=
+table></td></tr></table><![endif]--> </td> </tr> </tbody> </table> </div> <=
+!--[if mso | IE]></td></tr></table><![endif]--> </td> </tr> </tbody> </tabl=
+e> <!-- End of Footer --> </div>  =20
+<img src=3D"https://tipli.t.mailkit.eu/PfNybAUAXmZpZF9tc2cgmZgMZGlkX3QgzPkB=
+Y2FpZGQxNDc4ZGlkX2Ug5fX1vgRidHMg9ZrByAZhZXdjYXJsYXBsb3NjYXJ1QGdtYWlsLmNvbWd=
+pZF9zZW5kIOvvrgNhYWRvcGVuY2xvY2VkYXRhMWRjaGFuZWVtYWlsZmlkX3NtZGsyNTE2NjY0ND=
+Q4MmNjaWRkOTYxMWVpZF91bCDAoQdhdSU/E5fduQW5zNWOcJbqrKwqtX3UE8cm-VYjrLfx8XD7R=
+h8/open" width=3D"1" height=3D"1" style=3D"display:none"></body></html>
+------------=_1762676086-3654251-1848--
