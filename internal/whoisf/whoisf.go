@@ -26,6 +26,13 @@ func PerformWhoisLookup(ipAddress string, hostName string) (string, error) {
 	//real whois
 	if !IsPrivateIP(ipAddress) && ipAddress != "" {
 		result, err := whois.Whois(ipAddress)
+		if err == nil && (strings.Contains(result, "LEGACY") || !strings.Contains(result, "@")){
+			fmt.Println("REAL WHOIS returned legacy(incomplete data). Retrying")
+			detailedResult, errDetail := whois.Whois("n + " + ipAddress)
+			if errDetail == nil {
+				result = detailedResult
+			}
+		}
 		if err == nil {
 			fmt.Println("REAL WHOIS data retrieved.")
 			return result, nil
