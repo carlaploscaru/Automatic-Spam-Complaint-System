@@ -119,7 +119,6 @@ func main() {
 
 	fmt.Println(" FINAL COMPLAINT REPORT READY")
 	fmt.Println(complaint)
-	fmt.Println("can be sent, by copy paste")
 }
 
 // Simple helper to prevent slicing panics
