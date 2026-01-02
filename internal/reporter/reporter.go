@@ -49,9 +49,9 @@ func GenerateComplaint(data *ComplaintData) (string, error) {
 	b.WriteString("\n")
 
 	
-	// b.WriteString("Original email\n")
-	// b.WriteString(data.RawEmail)
-	// b.WriteString("\n\n")
+	b.WriteString("Original email\n")
+	b.WriteString(data.RawEmail)
+	b.WriteString("\n\n")
 
 
 	b.WriteString("Please investigate this spam email.\n")

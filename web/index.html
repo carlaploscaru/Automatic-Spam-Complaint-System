@@ -24,11 +24,6 @@
             transition: all 0.3s ease-in-out;
         }
 
-        @media (min-width: 768px) {
-            body {
-                padding: 2rem; 
-            }
-        }
 
         .container {
             max-width: 72rem; 
@@ -39,10 +34,35 @@
             border-radius: var(--radius-lg);
             padding: 1.5rem; 
         }
-        @media (min-width: 768px) {
-            .container {
-                padding: 2.5rem; 
-            }
+        .tabs { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 2rem; 
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 12px;
+        }
+
+        .tab-btn { 
+            background: #e5e7eb; 
+            color: #4b5563; 
+            border: none; 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            border-radius: var(--radius-lg); 
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active { 
+            background: var(--color-primary); 
+            color: white; 
+        }
+        .tab-content {
+            display: none; 
+        }
+
+        .tab-content.active {
+            display: block; 
         }
  
         textarea {
@@ -67,7 +87,46 @@
             transition: background-color 0.2s, box-shadow 0.2s;
             cursor: pointer;
         }
+        button.action-btn {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+        }
 
+        .whois-summary {
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: #fef3c7; 
+            border-left: 4px solid var(--color-warning);
+            border-radius: var(--radius-lg);
+        }
+
+        pre {
+            background: #1e293b;
+            color: #34d399;
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            overflow-x: auto;
+            white-space: pre-wrap;
+            border: 2px solid var(--color-secondary);
+        }
+
+        .history-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hidden { display: none; }
+        .placeholder-hint { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem; }
         #rawEmailInput + button {
             background-color: var(--color-primary);
             width: 100%;
@@ -76,11 +135,7 @@
         #rawEmailInput + button:hover {
             background-color: #1d4ed8; 
         }
-        @media (min-width: 768px) {
-            #rawEmailInput + button {
-                width: auto;
-            }
-        }
+       
         
         #resultsContainer button {
             background-color: var(--color-secondary);
@@ -128,17 +183,24 @@
         .custom-scrollbar::-webkit-scrollbar-track {
             background-color: #e5e7eb; 
         }
+
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Automatic Spam Complaint System</h1>
-        <p>Paste full email here </p>
 
+        <div class="tabs">
+            <button id="btn-analyze" class="tab-btn active" onclick="showTab('analyze')">Analyze</button>
+            <button id="btn-templates" class="tab-btn" onclick="showTab('settings')">Edit template before generating email</button>
+            <button id="btn-history" class="tab-btn" onclick="showTab('history')">Sent History</button>
+        </div>
      
+     <!-- analyse -->
+     <div id="section-analyze" class="tab-content active">
         <div style="margin-bottom: 1.5rem;">
-            <textarea id="rawEmailInput" rows="8" class="custom-scrollbar" placeholder="Paste the full email source (headers and body)..."></textarea>
+            <textarea id="rawEmailInput" rows="8" class="custom-scrollbar" placeholder="Paste here full email headers and body."></textarea>
             <button onclick="runAnalysis()">
                 Analyze Email 
             </button>
@@ -162,18 +224,153 @@
                 </div>
             </div>
 
-            <div style="margin-bottom: 2rem;">
-                <h3>
-                    Generated Abuse Complaint 
-                </h3>
+            <h3>Generated Abuse Complaint</h3>
+            <pre id="complaintOutput"></pre>
+            
+            <div style="display: flex; gap: 10px;">
+                <button class="action-btn" style="background: var(--color-secondary)" onclick="trackComplaint()">Save to History</button>
                
-                <div id="copyMessage" class="hidden" style="font-size: 0.875rem; color: #059669; margin-bottom: 0.5rem;"></div>
-                <pre id="complaintOutput" class="custom-scrollbar"></pre>
             </div>
 
         </div>
+     </div>
+   
+    <!-- edit -->
+    <div id="section-settings" class="tab-content">
+        <h3>Edit Complaint Template</h3>
+        <p class="placeholder-hint">Tags: {{ABUSE_EMAIL}}, {{IP}}, {{TIME}}, {{EVIDENCE}}</p>
+        <textarea id="templateInput" rows="12">To: {{ABUSE_EMAIL}}
+        Subject: Abuse Report: Unsolicited Email from IP {{IP}}
+
+        Hello,
+
+        Our system detected unsolicited activity from the following IP: {{IP}}
+        Time of Detection: {{TIME}}
+
+        Evidence:
+        {{EVIDENCE}}
+
+        Please investigate and take the necessary steps.
+        Regards.</textarea>
+        <button class="action-btn" onclick="saveTemplate()" style="background: var(--color-warning)">Save Template</button>
     </div>
 
+    <!-- history -->
+    <div id="section-history"  class="tab-content">
+        <h3>Sent Complaints Log</h3>
+        <div id="historyList">
+            <p>No complaints sent yet.</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
    
+    let currentComplaintData = null;
+    let sentHistory = JSON.parse(localStorage.getItem('spam_history') || '[]');
+    let customTemplate = localStorage.getItem('spam_template') || null;
+
+   
+    function showTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        if (event) {
+            event.target.classList.add('active');
+        }
+
+        document.querySelectorAll('.tab-content').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        const target = document.getElementById('section-' + tabId);
+        if (target) target.classList.add('active');
+        if (tabId === 'history') renderHistory();
+    }
+
+    function GenerateComplaint(template, abuseEmail, ip, time, evidence) {
+        let result = template;
+        result = result.replace(/{{ABUSE_EMAIL}}/g, abuseEmail);
+        result = result.replace(/{{IP}}/g, ip);
+        result = result.replace(/{{TIME}}/g, time);
+        result = result.replace(/{{EVIDENCE}}/g, evidence);
+        return result;
+    }
+
+    function runAnalysis() {
+        const raw = document.getElementById('rawEmailInput').value.trim();
+        if (!raw) return alert("Please paste an email source.");
+
+        const ipMatch = raw.match(/\[(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\]/);
+        const targetIP = ipMatch ? ipMatch[1] : "203.0.113.101";
+        const abuseEmail = "abuse@detected-isp.net";
+        const currentTime = new Date().toUTCString();
+
+        currentComplaintData = {
+            ip: targetIP,
+            abuseEmail: abuseEmail,
+            evidence: raw.substring(0, 500) + "...", 
+            time: currentTime
+        };
+
+   
+        const tmpl = customTemplate || document.getElementById('templateInput').value;
+        
+       
+        const finalComplaint = GenerateComplaint(
+            tmpl, 
+            currentComplaintData.abuseEmail, 
+            currentComplaintData.ip, 
+            currentComplaintData.time, 
+            currentComplaintData.evidence
+        );
+
+        document.getElementById('whoisSummary').innerText = `Target IP: ${targetIP} \nAbuse Contact: ${abuseEmail}`;
+        document.getElementById('complaintOutput').innerText = finalComplaint;
+        document.getElementById('resultsContainer').classList.remove('hidden');
+    }
+
+    function saveTemplate() {
+        const val = document.getElementById('templateInput').value;
+        localStorage.setItem('spam_template', val);
+        customTemplate = val;
+        alert("Template saved successfully!");
+    }
+
+    function trackComplaint() {
+        if (!currentComplaintData) return;
+        const entry = {
+            ip: currentComplaintData.ip,
+            email: currentComplaintData.abuseEmail,
+            date: new Date().toLocaleString()
+        };
+        sentHistory.unshift(entry);
+        localStorage.setItem('spam_history', JSON.stringify(sentHistory));
+        alert("Logged to history.");
+    }
+
+    function renderHistory() {
+        const list = document.getElementById('historyList');
+        if (sentHistory.length === 0) {
+            list.innerHTML = "<p>No complaints sent yet.</p>";
+            return;
+        }
+        list.innerHTML = sentHistory.map(item => `
+            <div class="history-item">
+                <span><strong>${item.ip}</strong> &rarr; ${item.email}</span>
+                <span style="color: #666; font-size: 0.8rem;">${item.date}</span>
+            </div>
+        `).join('');
+    }
+
+ 
+    if (customTemplate) {
+        document.getElementById('templateInput').value = customTemplate;
+    }
+</script>
+
+
+
 </body>
 </html>
