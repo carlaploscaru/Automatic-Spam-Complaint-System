@@ -34,7 +34,9 @@ procedures, and building tools that help maintain internet hygiene.
 • Template system for different types of spam\
 • Optional: Direct sending via SMTP\
 
-Terminal: “go run main.go” -> paste raw copie email from clipboard -> "ctrl + z" -> "enter" -> see results
+Terminal: AutomaticSpamComplaintSystemProject/Automatic-Spam-Complaint-System/cmd ->“go run main.go” -> paste raw copie email from clipboard -> "ctrl + z" -> "enter" -> see results
 UI: Automatic-Spam-Complaint-System/web/index.html -> double click
+Last run method: terminal -> AutomaticSpamComplaintSystemProject/Automatic-Spam-Complaint-System/ ->“go run main.go” -> open http://localhost:8080
 
-The UI shows a interactive interface with three tabs: Analyse, Edit template and Sent emails history. Before analysing an email we can customize the template as we wish and then save it. The spam email can then be analysed in the "Analyse" tab. We can paste the email into the textarea and click the "Analyse email" button to see informations about it. The results panel will apear with data such as IP, WHOIS Analysis, Email Trace Route, Generated Abuse Complaint. The email can then be sent or saved in history by either pressing the "send" buttor or the "save to history" button. In the History panel we can see the sent and the non sent email.
+
+The UI shows a interactive interface with three tabs: "Analyse", "Edit template" and "Send and see Hystory". Before analysing a spam email we can customize the template as we wish and then save it. The email can then be analysed in the "Analyse" tab. We can paste the email into the textarea and click the "Analyse email" button to see informations about it. The results panel will apear with data such as IP, WHOIS Analysis, Email Trace Route, Generated Abuse Complaint. The email can then be saved in history by pressing the button. In the History panel we can see the sent and saved complaints with aditional informations. The complaints that were recently saved can be sent by pressing the "send" buttom from the right.

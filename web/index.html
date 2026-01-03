@@ -194,7 +194,7 @@
     <div class="tabs">
         <button id="btn-analyze" class="tab-btn active" onclick="showTab('analyze')">Analyze</button>
         <button id="btn-templates" class="tab-btn" onclick="showTab('settings')">Edit Template</button>
-        <button id="btn-history" class="tab-btn" onclick="showTab('history')">Sent History</button>
+        <button id="btn-history" class="tab-btn" onclick="showTab('history')">Send and see History</button>
     </div>
      
     <div id="section-analyze" class="tab-content active">
@@ -231,12 +231,13 @@
 
             Our system detected unsolicited activity from the following IP: {{IP}}
             Time of Detection: {{TIME}}
+            Violation: Unsolicited Spam/Commercial Email
 
             Evidence:
             {{EVIDENCE}}
 
             Please investigate and take the necessary steps.
-            Regards.
+            Thank you.
         </textarea>
         <button class="action-btn" onclick="saveTemplate()" style="background: var(--color-warning)">Save Template</button>
     </div>
