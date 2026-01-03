@@ -225,23 +225,31 @@
         <h3>Edit Complaint Template</h3>
         <p class="placeholder-hint">Tags: {{ABUSE_EMAIL}}, {{IP}}, {{TIME}}, {{EVIDENCE}}</p>
         <textarea id="templateInput" rows="12">To: {{ABUSE_EMAIL}}
-Subject: Abuse Report: Unsolicited Email from IP {{IP}}
+            Subject: Abuse Report: Unsolicited Email from IP {{IP}}
 
-Hello,
+            Hello,
 
-Our system detected unsolicited activity from the following IP: {{IP}}
-Time of Detection: {{TIME}}
+            Our system detected unsolicited activity from the following IP: {{IP}}
+            Time of Detection: {{TIME}}
 
-Evidence:
-{{EVIDENCE}}
+            Evidence:
+            {{EVIDENCE}}
 
-Please investigate and take the necessary steps.
-Regards.</textarea>
+            Please investigate and take the necessary steps.
+            Regards.
+        </textarea>
         <button class="action-btn" onclick="saveTemplate()" style="background: var(--color-warning)">Save Template</button>
     </div>
 
     <div id="section-history" class="tab-content">
-        <h3>Sent Complaints Log</h3>
+        <div>
+            <h3>Saved</h3>
+            <div id="savedList"></div>
+        </div>
+        <div>
+            <h3>Sent </h3>
+            <div id="sentList"></div>
+        </div>
         <div id="historyList"></div>
     </div>
 </div>
@@ -251,6 +259,7 @@ Regards.</textarea>
    
     let currentComplaintData = null;
     let sentHistory = JSON.parse(localStorage.getItem('spam_history') || '[]');
+    let savedHistory = JSON.parse(localStorage.getItem('spam_saved') || '[]');
     let customTemplate = localStorage.getItem('spam_template') || null;
 
    
@@ -335,26 +344,52 @@ Regards.</textarea>
         const entry = {
             ip: currentComplaintData.ip,
             email: currentComplaintData.abuseEmail,
+            id: Date.now(),
             date: new Date().toLocaleString()
         };
-        sentHistory.unshift(entry);
-        localStorage.setItem('spam_history', JSON.stringify(sentHistory.slice(0, 20)));
-        alert("Logged to history.");
+        savedHistory.unshift(entry);
+        localStorage.setItem('spam_saved', JSON.stringify(savedHistory.slice(0, 20)));
+        alert("Saved");
+    }
+
+    function sendComplaint(id) {
+    const index = savedHistory.findIndex(item => item.id === id);
+    if (index === -1) return;
+
+    const item = savedHistory.splice(index, 1)[0];
+    item.sentDate = new Date().toLocaleString();
+    
+    sentHistory.unshift(item);
+    
+    localStorage.setItem('spam_saved', JSON.stringify(savedHistory));
+    localStorage.setItem('spam_hystory', JSON.stringify(sentHistory));
+    
+    alert(`Complaint sent to: ${item.abuseEmail}`);
+    renderHistory();
     }
 
     function renderHistory() {
-        const list = document.getElementById('historyList');
+        //const list = document.getElementById('historyList');
+        const savedEl = document.getElementById('savedList');
+        const sentEl = document.getElementById('sentList');
+
         if (sentHistory.length === 0) {
             list.innerHTML = "<p>No complaints sent yet.</p>";
             return;
         }
-        list.innerHTML = sentHistory.map(item => `
-            <div class="history-item">
-                <span><strong>${item.ip}</strong> &rarr; ${item.email}</span>
-                <span style="color: #666; font-size: 0.8rem;">${item.date}</span>
-            </div>
-        `).join('');
-    }
+        savedEl.innerHTML = savedHistory.length ? savedHistory.map(item => `
+        <div class="history-item">
+            <div><strong>${item.ip}</strong><br><small>Saved at:${item.date}</small></div>
+            <button onclick="sendComplaint(${item.id})" style="background:var(--color-primary); padding: 7px;">SEND</button>
+        </div>
+        `).join('') : "<p>None saved.</p>";
+
+        sentEl.innerHTML = sentHistory.length ? sentHistory.map(item => `
+        <div class="history-item">
+            <div><strong>${item.ip}</strong> - ${item.abuseEmail}<br><small>Sent at: ${item.sentDate}</small></div>
+        </div>
+        `).join('') : "<p>None sent.</p>";
+}
 
  
     if (customTemplate) {
