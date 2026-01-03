@@ -31,11 +31,9 @@ ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of c9611-m25166644482-e1205697253@mkt.news.tipli.ro designates 185.136.201.79 as permitted sender) smtp.mailfrom=c9611-m25166644482-e1205697253@mkt.news.tipli.ro;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=news.tipli.ro
 Return-Path: <c9611-m25166644482-e1205697253@mkt.news.tipli.ro>
-Received: from mail-tester.com (203.0.113.5) by mx.google.com with ESMTPS;
+Received: from google-mail.com (8.8.8.8) by mx.ff.com;
         Wed, 24 Dec 2025 10:00:00 -0800
-Subject: Test Mock Spam
-From: "Spammer" <spammer@test.com>
-
+        Subject: Real Domain Test
 Received-SPF: pass (google.com: domain of c9611-m25166644482-e1205697253@mkt.news.tipli.ro designates 185.136.201.79 as permitted sender) client-ip=185.136.201.79;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@news.tipli.ro header.s=k2-9611 header.b=oL7YzmX3;

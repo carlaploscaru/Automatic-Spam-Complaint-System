@@ -188,83 +188,63 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Automatic Spam Complaint System</h1>
+<div class="container">
+    <h1>Automatic Spam Complaint System</h1>
 
-        <div class="tabs">
-            <button id="btn-analyze" class="tab-btn active" onclick="showTab('analyze')">Analyze</button>
-            <button id="btn-templates" class="tab-btn" onclick="showTab('settings')">Edit template before generating email</button>
-            <button id="btn-history" class="tab-btn" onclick="showTab('history')">Sent History</button>
-        </div>
+    <div class="tabs">
+        <button id="btn-analyze" class="tab-btn active" onclick="showTab('analyze')">Analyze</button>
+        <button id="btn-templates" class="tab-btn" onclick="showTab('settings')">Edit Template</button>
+        <button id="btn-history" class="tab-btn" onclick="showTab('history')">Sent History</button>
+    </div>
      
-     <!-- analyse -->
-     <div id="section-analyze" class="tab-content active">
+    <div id="section-analyze" class="tab-content active">
         <div style="margin-bottom: 1.5rem;">
-            <textarea id="rawEmailInput" rows="8" class="custom-scrollbar" placeholder="Paste here full email headers and body."></textarea>
-            <button onclick="runAnalysis()">
-                Analyze Email 
-            </button>
+            <textarea id="rawEmailInput" rows="8" placeholder="Paste full email headers and body here..."></textarea>
+            <button id="mainAnalyzeBtn" class="action-btn" onclick="runAnalysis()">Analyze Email & Generate Complaint</button>
         </div>
 
-        <div id="resultsContainer" class="hidden" style="margin-top: 2rem;">
-            <h2>Results</h2>
+        <div id="resultsContainer" class="hidden">
             <div class="whois-summary">
-                <h3>
-                    WHOIS Analysis
-                </h3>
-                <div id="whoisSummary" style="font-size: 0.875rem;">
-                </div>
+                <h3>WHOIS Analysis</h3>
+                <div id="whoisSummary"></div>
             </div>
 
             <div style="margin-bottom: 2rem;">
-                <h3>
-                    Email Trace Route
-                </h3>
-                <div id="traceRouteVisualization">
-                </div>
+                <h3>Email Trace Route</h3>
+                <pre id="traceRouteOutput"></pre>
             </div>
 
             <h3>Generated Abuse Complaint</h3>
             <pre id="complaintOutput"></pre>
             
-            <div style="display: flex; gap: 10px;">
-                <button class="action-btn" style="background: var(--color-secondary)" onclick="trackComplaint()">Save to History</button>
-               
-            </div>
-
+            <button class="action-btn" style="background: var(--color-secondary)" onclick="trackComplaint()">Save to History</button>
         </div>
-     </div>
+    </div>
    
-    <!-- edit -->
     <div id="section-settings" class="tab-content">
         <h3>Edit Complaint Template</h3>
         <p class="placeholder-hint">Tags: {{ABUSE_EMAIL}}, {{IP}}, {{TIME}}, {{EVIDENCE}}</p>
         <textarea id="templateInput" rows="12">To: {{ABUSE_EMAIL}}
-        Subject: Abuse Report: Unsolicited Email from IP {{IP}}
+Subject: Abuse Report: Unsolicited Email from IP {{IP}}
 
-        Hello,
+Hello,
 
-        Our system detected unsolicited activity from the following IP: {{IP}}
-        Time of Detection: {{TIME}}
+Our system detected unsolicited activity from the following IP: {{IP}}
+Time of Detection: {{TIME}}
 
-        Evidence:
-        {{EVIDENCE}}
+Evidence:
+{{EVIDENCE}}
 
-        Please investigate and take the necessary steps.
-        Regards.</textarea>
+Please investigate and take the necessary steps.
+Regards.</textarea>
         <button class="action-btn" onclick="saveTemplate()" style="background: var(--color-warning)">Save Template</button>
     </div>
 
-    <!-- history -->
-    <div id="section-history"  class="tab-content">
+    <div id="section-history" class="tab-content">
         <h3>Sent Complaints Log</h3>
-        <div id="historyList">
-            <p>No complaints sent yet.</p>
-        </div>
+        <div id="historyList"></div>
     </div>
-
 </div>
-
 
 
 <script>
@@ -276,16 +256,13 @@
    
     function showTab(tabId) {
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        if (event) {
-            event.target.classList.add('active');
-        }
 
-        document.querySelectorAll('.tab-content').forEach(section => {
-            section.classList.remove('active');
-        });
-        
-        const target = document.getElementById('section-' + tabId);
-        if (target) target.classList.add('active');
+        if (tabId === 'analyze') document.getElementById('btn-analyze').classList.add('active');
+        if (tabId === 'settings') document.getElementById('btn-templates').classList.add('active');
+        if (tabId === 'history') document.getElementById('btn-history').classList.add('active');
+
+        document.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
+        document.getElementById('section-' + tabId).classList.add('active');
         if (tabId === 'history') renderHistory();
     }
 
@@ -298,26 +275,33 @@
         return result;
     }
 
-    function runAnalysis() {
+    async function runAnalysis() {
+        const btn = document.getElementById('mainAnalyzeBtn');
         const raw = document.getElementById('rawEmailInput').value.trim();
-        if (!raw) return alert("Please paste an email source.");
+        if (!raw) return alert("Paste email source.");
 
-        const ipMatch = raw.match(/\[(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\]/);
-        const targetIP = ipMatch ? ipMatch[1] : "203.0.113.101";
-        const abuseEmail = "abuse@detected-isp.net";
-        const currentTime = new Date().toUTCString();
+        btn.disabled = true;
+        btn.innerText = "analyzing with Go";
+
+        try {
+            const response = await fetch('/api/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ rawEmail: raw })
+            });
+
+            const data = await response.json();
+            if (data.error) throw new Error(data.error);
 
         currentComplaintData = {
-            ip: targetIP,
-            abuseEmail: abuseEmail,
-            evidence: raw.substring(0, 500) + "...", 
-            time: currentTime
+            ip: data.targetIP,
+            abuseEmail: data.abuseEmail,
+            evidence: raw.substring(0, 500), 
+            time: new Date().toUTCString(),
+            trace: data.traceRoute
         };
-
-   
         const tmpl = customTemplate || document.getElementById('templateInput').value;
         
-       
         const finalComplaint = GenerateComplaint(
             tmpl, 
             currentComplaintData.abuseEmail, 
@@ -326,9 +310,17 @@
             currentComplaintData.evidence
         );
 
-        document.getElementById('whoisSummary').innerText = `Target IP: ${targetIP} \nAbuse Contact: ${abuseEmail}`;
+        document.getElementById('whoisSummary').innerText = `Target IP: ${data.targetIP} \nAbuse Contact: ${data.abuseEmail}`;
         document.getElementById('complaintOutput').innerText = finalComplaint;
         document.getElementById('resultsContainer').classList.remove('hidden');
+        document.getElementById('traceRouteOutput').innerText = data.traceRoute;
+
+        } catch (err) {
+            alert("Error: " + err.message);
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "Analyze email and generate complaint";
+        }
     }
 
     function saveTemplate() {
@@ -346,7 +338,7 @@
             date: new Date().toLocaleString()
         };
         sentHistory.unshift(entry);
-        localStorage.setItem('spam_history', JSON.stringify(sentHistory));
+        localStorage.setItem('spam_history', JSON.stringify(sentHistory.slice(0, 20)));
         alert("Logged to history.");
     }
 
